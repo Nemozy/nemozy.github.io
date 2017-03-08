@@ -1,0 +1,24 @@
+﻿<HeroesSetting Ver="zwOeNuEuvLHSv4xcbU2MQQ==">
+  <Heroes>
+    <Hero Name="2ArwKeENV4zicqkGwHZn5Q==" Locked="2ArwKeENV4x7j/4oFr8mETB66+bliKxA">
+      <names RU="Джесси" ENG="Jessy" />
+      <Stats MaxSpeed="aaCNcSckY6M=" StartSpeed="2ok7ILoAKTA=" JumpPower="JCrXZf/n1xk=" Acceleration="YVXbsSw3+Lg=" Weight="aaCNcSckY6M=" />
+    </Hero>
+    <Hero Name="D2L9JNKw1X0=" Locked="Si6m2HyZ8F4YDJQegbYXnH7++IvLIOBt">
+      <names RU="Джимми" ENG="Jimmy" />
+      <Stats MaxSpeed="3TtM3nNXXlo=" StartSpeed="cOPc608DbSg=" JumpPower="uQq9mUWJJwA=" Acceleration="JuhQgDBugnk=" Weight="JuhQgDBugnk=" />
+    </Hero>
+    <Hero Name="a326ACdiCvt/zIJkF1eZKoKpIDEqqX+E" Locked="a326ACdiCvt/zIJkF1eZKrlw6N95YUUvDgyteGQxXCXcFEYGaee/dA==">
+      <names RU="Арти" ENG="Arty" />
+      <Stats MaxSpeed="IUye8oSJUOQ=" StartSpeed="JCrXZf/n1xk=" JumpPower="TiuT4IuIqAs=" Acceleration="helSVTQQpKw=" Weight="IaAseJPrYgo=" />
+    </Hero>
+    <Hero Name="bit/B9btT3hSPXiIAXjabOcYhjQdXsua" Locked="bit/B9btT3hSPXiIAXjabFyR/0GRC0/4+s+rfJNbZ4o=">
+      <names RU="Школота" ENG="Schoolboy" />
+      <Stats MaxSpeed="IaAseJPrYgo=" StartSpeed="o+p2mtEtL8E=" JumpPower="casQs444WQI=" Acceleration="L/FoM/yrlf4=" Weight="dsWKYT7tseU=" />
+    </Hero>
+    <Hero Name="hjYnu87KK9pLwOVim9lv87aHD9CLJ7kt" Locked="hjYnu87KK9pLwOVim9lv8/5xfvSpr+jBOaa3yVxRJo4=">
+      <names RU="Супермен" ENG="Superman" />
+      <Stats MaxSpeed="YIy6fi5MVl0=" StartSpeed="TiuT4IuIqAs=" JumpPower="wX0AFMh22Bs=" Acceleration="NxxAcH3Dda4=" Weight="lW1qXRA+rCI=" />
+    </Hero>
+  </Heroes>
+</HeroesSetting>

@@ -1,0 +1,15 @@
+c:\users\nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+c:\users\nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+c:\users\nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+c:\users\nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+c:\users\nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Nemozy\documents\visual studio 2012\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+G:\Panzer batallion\Tools\BulletXMLGenerator\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\_Console\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\_Console\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\_Console\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

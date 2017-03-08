@@ -1,0 +1,10 @@
+G:\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\BulletXMLGenerator\BulletXMLGenerator\bin\Debug\BulletXMLGenerator.exe.config
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\bin\Debug\BulletXMLGenerator.exe.config
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\bin\Debug\BulletXMLGenerator.exe
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\bin\Debug\BulletXMLGenerator.pdb
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.csprojResolveAssemblyReference.cache
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.Form1.resources
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.Properties.Resources.resources
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.csproj.GenerateResource.Cache
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.exe
+C:\Users\Public\Documents\Unity Projects\Panzer batallion\Tools\BulletXMLGenerator\BulletXMLGenerator\obj\Debug\BulletXMLGenerator.pdb

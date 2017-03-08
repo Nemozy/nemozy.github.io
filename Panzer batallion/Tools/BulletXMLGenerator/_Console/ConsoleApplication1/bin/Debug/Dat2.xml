@@ -1,0 +1,7 @@
+﻿<AchievementsSettings>
+  <Achievements>
+    <Achievement Name="SURVIVAL" NameENG="Survival" NameRU="Выживший" ProgressCurrent="0" ProgressMax="600" Description_ENG="Play in game 600 minutes." Description_RU="Провести в игре 600 минут." Reward="" GetReward="false" />
+    <Achievement Name="HARDCORE" NameENG="Hardcore" NameRU="Хардкорный" ProgressCurrent="0" ProgressMax="100000" Description_ENG="Collect 100,000 score points." Description_RU="Набрать 100,000 очков." Reward="" GetReward="false" />
+    <Achievement Name="DRUNKARD" NameENG="Drunkard" NameRU="Пьяница" ProgressCurrent="0" ProgressMax="1000" Description_ENG="Drunk 1000 times." Description_RU="Напиться в хлам 1000 раз." Reward="" GetReward="false" />
+  </Achievements>
+</AchievementsSettings>
