@@ -47,19 +47,22 @@ namespace BulletXMLGenerator
         }
         private void Save_button_Click(object sender, EventArgs e)
         {
-            SerializationStruct.WeaponNonCrypt weapon = new SerializationStruct.WeaponNonCrypt(Name_textBox.Text);
+            SerializationStruct.WeaponNonCrypt weapon = new SerializationStruct.WeaponNonCrypt(Name_textBox.Text, SlotName_textBox.Text);
             weapon.Blocked = bool.Parse(Blocked_comboBox.Text);
             weapon.UpgradeLvL = int.Parse(UpgradeLvL_textBox.Text);
             weapon.MinDmg = int.Parse(MinDmg_textBox.Text);
             weapon.MaxDmg = int.Parse(MaxDmg_textBox.Text);
             weapon.Count = int.Parse(Count_textBox.Text);
+            weapon.DmgRadius = int.Parse(DmgRadius_textBox.Text);
             weapon.Endless = bool.Parse(Endless_comboBox.Text);
 
-            if(AllWeapons.ContainsKey(Names_comboBox.SelectedItem as string))
+            if(Names_comboBox.SelectedItem != null && AllWeapons.ContainsKey(Names_comboBox.SelectedItem as string))
             {
                 AllWeapons.Remove(Names_comboBox.SelectedItem as string);
                 AllWeapons.Add(weapon.Name, weapon);
             }
+            else
+                AllWeapons.Add(weapon.Name, weapon);
             LoadAllItems();
         }
 
@@ -76,12 +79,13 @@ namespace BulletXMLGenerator
         {
             if (!string.IsNullOrEmpty(Name_textBox.Text))
             {
-                SerializationStruct.WeaponNonCrypt weapon = new SerializationStruct.WeaponNonCrypt(Name_textBox.Text);
+                SerializationStruct.WeaponNonCrypt weapon = new SerializationStruct.WeaponNonCrypt(Name_textBox.Text, SlotName_textBox.Text);
                 weapon.Blocked = bool.Parse(Blocked_comboBox.Text);
                 weapon.UpgradeLvL = int.Parse(UpgradeLvL_textBox.Text);
                 weapon.MinDmg = int.Parse(MinDmg_textBox.Text);
                 weapon.MaxDmg = int.Parse(MaxDmg_textBox.Text);
                 weapon.Count = int.Parse(Count_textBox.Text);
+                weapon.DmgRadius = int.Parse(DmgRadius_textBox.Text);
                 weapon.Endless = bool.Parse(Endless_comboBox.Text);
 
                 if (!AllWeapons.ContainsKey(Name_textBox.Text as string))
@@ -117,6 +121,12 @@ namespace BulletXMLGenerator
                 e.Handled = true;
         }
 
+        private void DmgRadius_textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 47 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
+        }
+
         private void LoadAllItems()
         {
             Names_comboBox.Items.Clear();
@@ -139,11 +149,13 @@ namespace BulletXMLGenerator
             if (Names_comboBox.Items.Count > 0)
             {
                 Name_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].Name;
+                SlotName_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].SlotName;
                 Blocked_comboBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].Blocked.ToString().ToUpper();
                 UpgradeLvL_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].UpgradeLvL.ToString();
                 MinDmg_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].MinDmg.ToString();
                 MaxDmg_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].MaxDmg.ToString();
                 Count_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].Count.ToString();
+                DmgRadius_textBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].DmgRadius.ToString();
                 Endless_comboBox.Text = AllWeapons[Names_comboBox.SelectedItem as string].Endless.ToString().ToUpper();
             }
         }
@@ -175,11 +187,12 @@ namespace BulletXMLGenerator
 
                     for (int i = 0; i < xmlFile.Weapons.Count; i++)
                     {
-                        SerializationStruct.WeaponNonCrypt bullet = new SerializationStruct.WeaponNonCrypt(CryptorEngine.DecryptString(xmlFile.Weapons[i].Name, secretKey));
+                        SerializationStruct.WeaponNonCrypt bullet = new SerializationStruct.WeaponNonCrypt(CryptorEngine.DecryptString(xmlFile.Weapons[i].Name, secretKey), CryptorEngine.DecryptString(xmlFile.Weapons[i].SlotName, secretKey));
                         bullet.Endless = bool.Parse(CryptorEngine.DecryptString(xmlFile.Weapons[i].Endless, secretKey));
                         bullet.MaxDmg = int.Parse(CryptorEngine.DecryptString(xmlFile.Weapons[i].MaxDmg, secretKey));
                         bullet.MinDmg = int.Parse(CryptorEngine.DecryptString(xmlFile.Weapons[i].MinDmg, secretKey));
                         bullet.UpgradeLvL = int.Parse(CryptorEngine.DecryptString(xmlFile.Weapons[i].UpgradeLvL, secretKey));
+                        bullet.DmgRadius = int.Parse(CryptorEngine.DecryptString(xmlFile.Weapons[i].DmgRadius, secretKey));
 
                         AllWeapons.Add(CryptorEngine.DecryptString(xmlFile.Weapons[i].Name, secretKey), bullet);
                     }
@@ -199,10 +212,12 @@ namespace BulletXMLGenerator
             {
                 SerializationStruct.WeaponCrypt wc = new SerializationStruct.WeaponCrypt();
                 wc.Name = CryptorEngine.EncryptString(AllWeapons[key].Name, secretKey);
+                wc.SlotName = CryptorEngine.EncryptString(AllWeapons[key].SlotName, secretKey);
                 wc.Blocked = CryptorEngine.EncryptString(AllWeapons[key].Blocked.ToString(), secretKey);
                 wc.Count = CryptorEngine.EncryptString(AllWeapons[key].Count.ToString(), secretKey);
                 wc.Endless = CryptorEngine.EncryptString(AllWeapons[key].Endless.ToString(), secretKey);
                 wc.UpgradeLvL = CryptorEngine.EncryptString(AllWeapons[key].UpgradeLvL.ToString(), secretKey);
+                wc.DmgRadius = CryptorEngine.EncryptString(AllWeapons[key].DmgRadius.ToString(), secretKey);
                 wc.MinDmg = CryptorEngine.EncryptString(AllWeapons[key].MinDmg.ToString(), secretKey);
                 wc.MaxDmg = CryptorEngine.EncryptString(AllWeapons[key].MaxDmg.ToString(), secretKey);
 
@@ -295,7 +310,7 @@ namespace BulletXMLGenerator
             */
             return weapons_return;
         }
-
+        
         /*private string encrypt(string s)
         {
             byte[] inputbuffer = Encoding.Unicode.GetBytes(s);

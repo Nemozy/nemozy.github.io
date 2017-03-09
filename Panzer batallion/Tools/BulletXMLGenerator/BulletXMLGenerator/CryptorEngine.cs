@@ -26,6 +26,9 @@ namespace BulletXMLGenerator
         //Encrypt
         public static string EncryptString(string plainText, string passPhrase)
         {
+            if (plainText == null || string.IsNullOrEmpty(plainText))
+                return string.Empty;
+
             byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
             byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
             PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);
@@ -45,6 +48,9 @@ namespace BulletXMLGenerator
         //Decrypt
         public static string DecryptString(string cipherText, string passPhrase)
         {
+            if (cipherText == null || string.IsNullOrEmpty(cipherText))
+                return string.Empty;
+
             byte[] initVectorBytes = Encoding.UTF8.GetBytes(initVector);
             byte[] cipherTextBytes = Convert.FromBase64String(cipherText);
             PasswordDeriveBytes password = new PasswordDeriveBytes(passPhrase, null);

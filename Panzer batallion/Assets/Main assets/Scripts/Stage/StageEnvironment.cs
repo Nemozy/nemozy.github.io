@@ -216,7 +216,7 @@ public class StageEnvironment : MonoBehaviour
         return StartStep;
     }
 
-    public void SetWeapon(int radiusDmg, int dmg)
+    public void SetWeapon(int radiusDmg, int dmgMin, int dmgMax)
     {
         Transform playerUnit = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank").transform;
         if (playerUnit)
@@ -245,5 +245,19 @@ public class StageEnvironment : MonoBehaviour
     private string SetNewTimeInWidget(float dur)
     {
         return UITime.GetComponent<UnityEngine.UI.Text>().text = "0:" + string.Format("{0:00}", Mathf.FloorToInt(dur - (Time.timeSinceLevelLoad - StepTime)));
+    }
+
+    public Dictionary<string, GameInfo.Weapon> GetWeaponsDefault_SlotKey()
+    {
+        Dictionary<string, GameInfo.Weapon> retMass = new Dictionary<string, GameInfo.Weapon>();
+
+        foreach(string key in InventoryInfo.AllWeapons.Keys)
+        {
+            if(!retMass.ContainsKey(InventoryInfo.AllWeapons[key].SlotName))
+                retMass.Add(InventoryInfo.AllWeapons[key].SlotName, InventoryInfo.AllWeapons[key]);
+        }
+
+
+        return retMass;
     }
 }
