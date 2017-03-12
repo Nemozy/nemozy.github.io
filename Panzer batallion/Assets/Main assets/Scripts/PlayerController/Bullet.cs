@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //public bool dead = false;
-    // public int explosionRadius = 40; // unity units * 100
-
-
     private int Id;
     private int ParentTankId;
     private string NameExplosion;
@@ -39,6 +35,7 @@ public class Bullet : MonoBehaviour
             {
                 inst.GetComponent<ExplosionBullet>().SetExplosionRadius(ScaleSizeExplosion);
                 inst.GetComponent<ExplosionBullet>().SetParentBulletId(Id);
+                inst.GetComponent<ExplosionBullet>().SetParentTankId(ParentTankId);
             }
             DestroyObject(inst, Delay);
             Destroy(this.gameObject);
@@ -80,34 +77,11 @@ public class Bullet : MonoBehaviour
             if(inst.GetComponent<ExplosionBullet>())
             {
                 inst.GetComponent<ExplosionBullet>().SetExplosionRadius(ScaleSizeExplosion);
+                inst.GetComponent<ExplosionBullet>().SetParentBulletId(Id);
+                inst.GetComponent<ExplosionBullet>().SetParentTankId(ParentTankId);
             }
             DestroyObject(inst, Delay);
-
-            //if (transform)
-            //{
-            //    Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
-            //    Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)explosionRadius /*/ 100*/);
-
-            //    for (int i = 0; i < colliders.Length; i++)
-            //    {
-            //        if (colliders[i].GetComponent<DestructibleSprite>())
-            //            colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, explosionRadius);
-            //    }
-            //}
             Destroy(this.gameObject);
         }
     }
-
-    /*public void OnDestroy()
-    {
-
-        Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)explosionRadius / 100);
-
-        for (int i = 0; i < colliders.Length; i++)
-        {
-            if (colliders[i].GetComponent<DestructibleSprite>())
-                colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, explosionRadius);
-        }
-    }*/
 }

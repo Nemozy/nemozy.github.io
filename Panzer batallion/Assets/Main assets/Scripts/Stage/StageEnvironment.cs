@@ -22,6 +22,9 @@ public class StageEnvironment : MonoBehaviour
     //private int IdPlayersStep = 0;
     //private bool Shoot = false;
 
+    private int GameObjectId = 0;
+    private int CountPlayers = 0;
+
     void Start ()
     {
         GameOver = false;
@@ -109,13 +112,13 @@ public class StageEnvironment : MonoBehaviour
 
     private bool ConnectionPlayers()
     {
-        int numPl = 1;
+        CountPlayers = 1;
 
         Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
 
         //Player_1
         UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
-        pl.Name = "Player_" + numPl.ToString();
+        pl.Name = "Player_" + CountPlayers.ToString();
         Object player_obj = Resources.Load("Stages/Player_");
         GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         inst.name = pl.Name;
@@ -127,16 +130,16 @@ public class StageEnvironment : MonoBehaviour
         inst_tank.name = "Tank";
         inst_tank.transform.SetParent(inst.transform);
         inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
-        inst_tank.GetComponent<UnitController>().SetId(numPl);
+        inst_tank.GetComponent<UnitController>().SetId(CountPlayers);
         pl.Unit = new UserInfo.UnitInfo();
         pl.Unit.TransformUnit = inst_tank.transform;
-        Players.Add(numPl, pl);
+        Players.Add(CountPlayers, pl);
 
-        numPl++;
+        CountPlayers++;
 
         //Player_2
         pl = new UserInfo.PlayerInfo();
-        pl.Name = "Player_" + numPl.ToString();
+        pl.Name = "Player_" + CountPlayers.ToString();
         player_obj = Resources.Load("Stages/Player_");
         inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         inst.name = pl.Name;
@@ -148,10 +151,10 @@ public class StageEnvironment : MonoBehaviour
         inst_tank.name = "Tank";
         inst_tank.transform.SetParent(inst.transform);
         inst_tank.transform.localPosition = new Vector3(250, -67, 0);
-        inst_tank.GetComponent<UnitController>().SetId(numPl);
+        inst_tank.GetComponent<UnitController>().SetId(CountPlayers);
         pl.Unit = new UserInfo.UnitInfo();
         pl.Unit.TransformUnit = inst_tank.transform;
-        Players.Add(numPl, pl);
+        Players.Add(CountPlayers, pl);
 
         return true;
     }
@@ -167,6 +170,11 @@ public class StageEnvironment : MonoBehaviour
     {
         ///!!!!
         return false;
+    }
+
+    public int GetGameObjectId()
+    {
+        return GameObjectId++;
     }
 
     public UserInfo.PlayerInfo GetPlayerInfo(int id)
@@ -186,13 +194,11 @@ public class StageEnvironment : MonoBehaviour
 
     public void BlockShoot()
     {
-        //Shoot = true;
         StepState.ShootState = true;
     }
 
     public void UnBlockShoot()
     {
-       // Shoot = false;
         StepState.ShootState = false;
     }
 

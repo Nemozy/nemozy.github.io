@@ -6,6 +6,7 @@ public class WeaponController: MonoBehaviour
 {
     public Transform ammoNeutralParent;
     public Transform Owner;
+    public Transform Stage;
     string NameBullet;
     private int RadiusDmg = 15;
 
@@ -13,8 +14,8 @@ public class WeaponController: MonoBehaviour
     {
         Owner = owner;
         NameBullet = nameBullet;
-
-        ammoNeutralParent = GameObject.Find("Main Camera").transform.Find("Stage").Find("NeutralObjects").Find("Bullets").transform;
+        Stage = GameObject.Find("Main Camera").transform.Find("Stage");
+        ammoNeutralParent = Stage.Find("NeutralObjects").Find("Bullets").transform;
     }
 
     public void SetWeapon(int radiusDmg)
@@ -29,7 +30,7 @@ public class WeaponController: MonoBehaviour
         inst.transform.SetParent(ammoNeutralParent);
         inst.name = "Bullet";
         inst.transform.position = vecPos;
-        inst.GetComponent<Bullet>().SetId(0, Owner.GetComponent<UnitController>().GetId());
+        inst.GetComponent<Bullet>().SetId(Stage.GetComponent<StageEnvironment>().GetGameObjectId(), Owner.GetComponent<UnitController>().GetId());
         inst.GetComponent<Bullet>().SetParentName(player);
         inst.GetComponent<Bullet>().SetExplosionName("Explosion", 1, RadiusDmg);
         //inst.transform.position = Owner.transform.position;

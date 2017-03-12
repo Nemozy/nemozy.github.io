@@ -5,9 +5,10 @@ using UnityEngine;
 public class ExplosionBullet : MonoBehaviour
 {
     private int ParentBulletId;
+    private int ParentTankId;
     public bool dead = false;
-    public int ExplosionRadius = 40; // unity units * 100
-    public int ExplosionDmg = 20; // unity units * 100
+    public int ExplosionRadius = 40;
+    public int ExplosionDmg = 20;
     private Transform Players;
     private Transform Stage;
 
@@ -21,7 +22,6 @@ public class ExplosionBullet : MonoBehaviour
             if(Players.GetChild(i).Find("Tank") && Players.GetChild(i).Find("Tank").GetComponent<UnitController>())
                 Players.GetChild(i).Find("Tank").GetComponent<UnitController>().FreezePosition(Time.timeSinceLevelLoad, 1f);
         }
-       // Application.targetFrameRate = 60;
     }
 
     void Start ()
@@ -30,8 +30,7 @@ public class ExplosionBullet : MonoBehaviour
         {
             Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)ExplosionRadius);
-
-            //Debug.Log(colliders.Length);
+            
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].GetComponent<UnitController>())
@@ -47,6 +46,11 @@ public class ExplosionBullet : MonoBehaviour
         ParentBulletId = parentBulletId;
     }
 
+    public void SetParentTankId(int parentTankId)
+    {
+        ParentTankId = parentTankId;
+    }
+
     public void SetExplosionRadius(int value)
     {
         ExplosionRadius = value;
@@ -56,22 +60,7 @@ public class ExplosionBullet : MonoBehaviour
     {
         ExplosionDmg = value;
     }
-
-    /*void OnCollisionEnter2D(Collision2D coll)
-    {
-        //Debug.Log(coll.gameObject.name);
-        if (transform)
-        {
-            Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)explosionRadius);
-
-            for (int i = 0; i < colliders.Length; i++)
-            {
-                if (colliders[i].GetComponent<DestructibleSprite>())
-                    colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, explosionRadius);
-            }
-        }
-    }*/
+    
     public void OnDestroy()
     {
         for (int i = 0; i < Players.childCount; i++)
@@ -83,25 +72,11 @@ public class ExplosionBullet : MonoBehaviour
         }
         if (Stage && Stage.GetComponent<StageEnvironment>())
         {
-            Transform tank = Stage.GetComponent<StageEnvironment>().GetPlayerInfo(ParentBulletId).Unit.TransformUnit;
+            Transform tank = Stage.GetComponent<StageEnvironment>().GetPlayerInfo(ParentTankId).Unit.TransformUnit;
             if(tank && tank.GetComponent<UnitController>())
             {
                 tank.GetComponent<UnitController>().RemoveBullet(ParentBulletId);
             }
         }
     }
-    // {
-         /*if (transform)
-         {
-             Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
-             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)explosionRadius );
-
-            //Debug.Log(colliders.Length);
-            for (int i = 0; i < colliders.Length; i++)
-             {
-                 if (colliders[i].GetComponent<DestructibleSprite>())
-                     colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, explosionRadius);
-             }
-         }*/
-     //}
 }
