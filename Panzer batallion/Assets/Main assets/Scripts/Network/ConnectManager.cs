@@ -6,6 +6,7 @@ public class ConnectManager : Photon.PunBehaviour
 {
     private string GameVersion = "ver 0.19";
     private PhotonView MasterView;
+    private Transform itemText;
 
 	void Start ()
     {
@@ -13,7 +14,13 @@ public class ConnectManager : Photon.PunBehaviour
         PhotonNetwork.ConnectUsingSettings(GameVersion);
         PhotonNetwork.automaticallySyncScene = true;
     }
-
+    private void Update()
+    {
+        if (itemText)
+        {
+            itemText.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
+        }
+    }
     public void ChangeLevelMaster()
     {
         if(PhotonNetwork.masterClient.IsMasterClient)
@@ -32,8 +39,11 @@ public class ConnectManager : Photon.PunBehaviour
         return PhotonNetwork.JoinRandomRoom();
     }
 
-    public bool ConnectInLobbyByRating_Duel()
+    public bool ConnectInLobbyByRating_Duel(Transform textItem)
     {
+        if(textItem)
+            itemText = textItem;
+
         bool findRoom = false;
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         for (int i = 0; i < rooms.Length; i++)
@@ -45,17 +55,11 @@ public class ConnectManager : Photon.PunBehaviour
                     findRoom = true;
             }
         }
-
-        if (!findRoom)
-        {
-            if(ConnectInRandomLobby())
-                findRoom = true;
-        }
+        
         if (!findRoom)
         {
             findRoom = CreateLobby();
         }
-
         return findRoom;
     }
 

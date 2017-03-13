@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
     public Transform OnlineBox_text;
-
+    
 	void Start ()
     {
         Application.targetFrameRate = 60;
@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour
 
     public void JoinInLobby(string stageName)
     {
-        if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel())
+        if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
         {
             this.transform.GetComponent<ConnectManager>().LoadLvL(stageName);
             //UnityEngine.SceneManagement.SceneManager.LoadScene(stageName);
