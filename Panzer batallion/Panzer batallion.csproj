@@ -73,11 +73,11 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="websocket-sharp">
-      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="Photon3Unity3D">
       <HintPath>Assets\Plugins\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets\Plugins\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,8 @@
     <Compile Include="Assets\Main assets\Scripts\Library\GameInfo.cs" />
     <Compile Include="Assets\Main assets\Scripts\Library\MainButton.cs" />
     <Compile Include="Assets\Main assets\Scripts\Library\UserInfo.cs" />
+    <Compile Include="Assets\Main assets\Scripts\Menu\LoadingStage.cs" />
+    <Compile Include="Assets\Main assets\Scripts\Menu\MenuController.cs" />
     <Compile Include="Assets\Main assets\Scripts\Network\ConnectManager.cs" />
     <Compile Include="Assets\Main assets\Scripts\PlayerController\Bullet.cs" />
     <Compile Include="Assets\Main assets\Scripts\PlayerController\ExplosionBullet.cs" />

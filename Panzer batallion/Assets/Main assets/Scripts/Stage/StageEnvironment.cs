@@ -27,6 +27,7 @@ public class StageEnvironment : MonoBehaviour
 
     void Start ()
     {
+        Application.targetFrameRate = 60;
         GameOver = false;
         InventoryInfo = new GameInfo.WeaponsInventoryInfo();
         LoadWeaponInventoryInfo();

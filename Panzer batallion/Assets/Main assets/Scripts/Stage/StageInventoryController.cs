@@ -11,6 +11,7 @@ public class StageInventoryController : MonoBehaviour
 
     void Start()
     {
+        Application.targetFrameRate = 60;
         Dictionary<string, GameInfo.Weapon> Weapons = Stage.GetComponent<StageEnvironment>().GetWeaponsDefault_SlotKey();
         if (Weapons.ContainsKey("Item_1"))
         {

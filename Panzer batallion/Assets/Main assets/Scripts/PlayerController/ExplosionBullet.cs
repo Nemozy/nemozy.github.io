@@ -14,6 +14,7 @@ public class ExplosionBullet : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         Stage = GameObject.Find("Main Camera").transform.Find("Stage").transform;
         Players = Stage.Find("Players");
 

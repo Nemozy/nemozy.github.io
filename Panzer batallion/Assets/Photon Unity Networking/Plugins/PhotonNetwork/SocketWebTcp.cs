@@ -100,7 +100,7 @@ namespace ExitGames.Client.Photon
             this.websocketConnectionObject.hideFlags = HideFlags.HideInHierarchy;
             UnityEngine.Object.DontDestroyOnLoad(this.websocketConnectionObject);
 
-            this.sock = new WebSocket(new Uri(/*"wss://" + */ServerAddress));
+            this.sock = new WebSocket(new Uri(/*"wss://"+ */ServerAddress));
             this.sock.Connect();
 
             mb.StartCoroutine(this.ReceiveLoop());

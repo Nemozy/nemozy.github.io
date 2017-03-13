@@ -12,6 +12,7 @@ public class WeaponController: MonoBehaviour
 
     public WeaponController(Transform owner, string nameBullet)
     {
+        Application.targetFrameRate = 60;
         Owner = owner;
         NameBullet = nameBullet;
         Stage = GameObject.Find("Main Camera").transform.Find("Stage");
