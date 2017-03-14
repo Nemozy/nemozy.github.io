@@ -79,6 +79,8 @@ public class ConnectManager : Photon.PunBehaviour
 
     void OnJoinedLobby()
     {
+        if(ConnectInLobbyByRating_Duel(null))
+            LoadLvL("StagePvPDuel");
         Debug.Log("I JOINED IN LOBBY!");
     }
 }
