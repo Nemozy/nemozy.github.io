@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
 	void Start ()
     {
         Application.targetFrameRate = 60;
+        this.transform.GetComponent<ConnectManager>().SetSingletonSettings();
         UpdateOnline();
     }
 
@@ -28,7 +29,6 @@ public class MenuController : MonoBehaviour
         if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
         {
             this.transform.GetComponent<ConnectManager>().LoadLvL(stageName);
-            //UnityEngine.SceneManagement.SceneManager.LoadScene(stageName);
         }
     }
 }

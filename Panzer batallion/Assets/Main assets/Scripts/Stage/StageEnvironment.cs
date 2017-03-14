@@ -6,6 +6,7 @@ public class StageEnvironment : MonoBehaviour
 {
     private Dictionary<int, UserInfo.PlayerInfo> Players;
     private float StepTime = 0;
+    private float StartingTime = 0;
     private bool StartStep = false;
     private bool StartGame = false;
     private bool GameOver = false;
@@ -30,29 +31,43 @@ public class StageEnvironment : MonoBehaviour
         Application.targetFrameRate = 60;
         GameOver = false;
         InventoryInfo = new GameInfo.WeaponsInventoryInfo();
-        LoadWeaponInventoryInfo();
+        //LoadWeaponInventoryInfo();
         Players = new Dictionary<int, UserInfo.PlayerInfo>();
         UITime = UI.Find("Time").Find("Text");
         UIMessage = UI.Find("Message");
         UIBlockScreen = UI.Find("BlockScreen");
         StepState = new UserInfo.Step();
 
-        ConnectionPlayers();
+        //ConnectionPlayers();
 
-        BlockAllTanks();
+        //BlockAllTanks();
     }
 
     void Update()
     {
         if(!StartGame)
         {
-            if(Time.timeSinceLevelLoad > 10)
+            if(PhotonNetwork.inRoom && PhotonNetwork.playerList.Length < 2)
+            {
+                BlockScreen(true);
+                UIMessage.gameObject.SetActive(true);
+                UIMessage.GetComponent<UnityEngine.UI.Text>().text = "Ждем других игроков..." + SetNewTimeInWidget(31);
+
+                if(Time.timeSinceLevelLoad - 31 < 0)
+                    return;
+            }
+            else if(StartingTime == 0)
+            {
+                StartingTime = Time.timeSinceLevelLoad;
+                ConnectionPlayers();
+                BlockAllTanks();
+            }
+
+            if(Time.timeSinceLevelLoad - StartingTime > 3)
             {
                 StepState.NewStep(Time.timeSinceLevelLoad, Random.Range(1, Players.Count + 1));
-                // IdPlayersStep = Random.Range(1, Players.Count+1);
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
-                //Shoot = false;
                 UIMessage.gameObject.SetActive(false);
                 StartGame = true;
                 BlockScreen(false);
@@ -62,7 +77,7 @@ public class StageEnvironment : MonoBehaviour
             {
                 BlockScreen(true);
                 UIMessage.gameObject.SetActive(true);
-                UIMessage.GetComponent<UnityEngine.UI.Text>().text = "Waiting..." + SetNewTimeInWidget(11);
+                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> " + SetNewTimeInWidget(4) + " <<<";
             }
         }
 
@@ -77,12 +92,8 @@ public class StageEnvironment : MonoBehaviour
                     StepState.NewStep(Time.timeSinceLevelLoad, StepState.PlayerId + 1);
                 else
                     StepState.NewStep(Time.timeSinceLevelLoad, 1);
-                /*IdPlayersStep += 1;
-                if (IdPlayersStep > Players.Count)
-                    IdPlayersStep = 1;*/
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
-                //Shoot = false;
             }
 
             if(StartStep)
@@ -99,9 +110,19 @@ public class StageEnvironment : MonoBehaviour
                     {
                         StartStep = false;
                         BlockAllTanks();
-                        if(CheckWinner())
+                        int winnerNum = CheckWinner();
+                        if (winnerNum > 0)
                         {
                             GameOver = true;
+
+                            BlockScreen(true);
+                            UIMessage.gameObject.SetActive(true);
+                            if (winnerNum == 3 ||
+                                (winnerNum == 2 && string.Equals(Players[PhotonNetwork.player.ID].Team, PunTeams.Team.red.ToString())) ||
+                                (winnerNum == 1 && string.Equals(Players[PhotonNetwork.player.ID].Team, PunTeams.Team.blue.ToString())))
+                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы проиграли <<<";
+                            else
+                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы победили <<<";
                         }
                     }
                     else
@@ -113,7 +134,39 @@ public class StageEnvironment : MonoBehaviour
 
     private bool ConnectionPlayers()
     {
-        CountPlayers = 1;
+        for(int i=1; i< PhotonNetwork.playerList.Length; i++)
+        {
+            Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
+            if(i%2 == 0)
+                PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.blue);
+            else
+                PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.red);
+            
+            UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
+            pl.Name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
+            Object player_obj = Resources.Load("Stages/Player_");
+            GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            inst.name = pl.Name;
+            pl.Team = PhotonNetwork.playerList[i].GetTeam().ToString();
+            inst.transform.SetParent(players);
+            inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+            inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+            Object tank = Resources.Load("Models/Tanks/Tank_1/Tank_1");
+            GameObject inst_tank = Instantiate(tank, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            inst_tank.name = "Tank";
+            inst_tank.transform.SetParent(inst.transform);
+            if (i == 1)
+                inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
+            if (i == 2)
+                inst_tank.transform.localPosition = new Vector3(250, -67, 0);
+            inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.playerList[i].ID);
+            pl.Unit = new UserInfo.UnitInfo();
+            pl.Unit.TransformUnit = inst_tank.transform;
+            Players.Add(PhotonNetwork.playerList[i].ID, pl);
+        }
+        CountPlayers = PhotonNetwork.playerList.Length;
+
+        /*CountPlayers = 1;
 
         Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
 
@@ -156,21 +209,35 @@ public class StageEnvironment : MonoBehaviour
         pl.Unit = new UserInfo.UnitInfo();
         pl.Unit.TransformUnit = inst_tank.transform;
         Players.Add(CountPlayers, pl);
-
+        */
         return true;
     }
 
     //Fix inventory (общий пример оружия, который будет копироваться и догружаться от плеера.)
-    private void LoadWeaponInventoryInfo()
+    /*private void LoadWeaponInventoryInfo()
     {
         //InventoryInfo
-    }
-
-    //!!! Доделать проверку на выигрыш!!!!
-    public bool CheckWinner()
+    }*/
+    
+    public int CheckWinner()
     {
-        ///!!!!
-        return false;
+        int RedTeamAlive = 0;
+        int BlueTeamAlive = 0;
+        foreach (int key in Players.Keys)
+        {
+            if (string.Equals(Players[key].Team, PunTeams.Team.blue.ToString()) && Players[key].Unit.TransformUnit.GetComponent<UnitController>().UnitInfo.Hp.CurrentHp > 0)
+                BlueTeamAlive++;
+            if (string.Equals(Players[key].Team, PunTeams.Team.red.ToString()) && Players[key].Unit.TransformUnit.GetComponent<UnitController>().UnitInfo.Hp.CurrentHp > 0)
+                RedTeamAlive++;
+        }
+
+        if (RedTeamAlive == 0 && BlueTeamAlive == 0)
+            return 3;
+        if (RedTeamAlive == 0)
+            return 2;
+        if (BlueTeamAlive == 0)
+            return 1;
+        return 0;
     }
 
     public int GetGameObjectId()

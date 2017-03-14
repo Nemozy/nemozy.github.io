@@ -8,12 +8,17 @@ public class ConnectManager : Photon.PunBehaviour
     private PhotonView MasterView;
     private Transform itemText;
 
-	void Start ()
+    public void Awake()
     {
         Application.targetFrameRate = 60;
-        PhotonNetwork.ConnectUsingSettings(GameVersion);
-        PhotonNetwork.automaticallySyncScene = true;
+        //PhotonNetwork.ConnectUsingSettings(GameVersion);
     }
+
+    void Start ()
+    {
+
+    }
+
     private void Update()
     {
         if (itemText)
@@ -21,6 +26,19 @@ public class ConnectManager : Photon.PunBehaviour
             itemText.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
         }
     }
+
+    public void SetSingletonSettings()
+    {
+        PhotonNetwork.automaticallySyncScene = true;
+        PhotonNetwork.ConnectUsingSettings(GameVersion);
+        //PhotonNetwork.InitializeSecurity();
+
+        if (string.IsNullOrEmpty(PhotonNetwork.playerName))
+        {
+            PhotonNetwork.playerName = "Guest" + Random.Range(1, 9999);
+        }
+    }
+
     public void ChangeLevelMaster()
     {
         if(PhotonNetwork.masterClient.IsMasterClient)
@@ -29,14 +47,19 @@ public class ConnectManager : Photon.PunBehaviour
         }
     }
 
-    public bool CreateLobby()
+    public bool CreateLobby(RoomOptions settings)
     {
-        return PhotonNetwork.CreateRoom(null);
+        return PhotonNetwork.CreateRoom("", settings, null);
     }
 
     public bool ConnectInRandomLobby()
     {
         return PhotonNetwork.JoinRandomRoom();
+    }
+
+    public int GetPing()
+    {
+        return PhotonNetwork.GetPing();
     }
 
     public bool ConnectInLobbyByRating_Duel(Transform textItem)
@@ -58,7 +81,7 @@ public class ConnectManager : Photon.PunBehaviour
         
         if (!findRoom)
         {
-            findRoom = CreateLobby();
+            findRoom = CreateLobby(new RoomOptions() { MaxPlayers = 2 });
         }
         return findRoom;
     }

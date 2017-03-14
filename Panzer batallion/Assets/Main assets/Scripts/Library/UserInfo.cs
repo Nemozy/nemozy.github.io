@@ -54,6 +54,7 @@ public class UserInfo
     {
         [XmlElement("Name")]
         public string Name { get; set; }
+        public string Team { get; set; }
         public UnitInfo Unit { get; set; }
     }
     public class UnitInfo
