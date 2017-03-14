@@ -90,6 +90,11 @@ public class ConnectManager : Photon.PunBehaviour
     {
         return PhotonNetwork.countOfPlayers;
     }
+
+    public int GetLobiesCount()
+    {
+        return PhotonNetwork.GetRoomList().Length;
+    }
     /*  private void OnGUI()
       {
           GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
@@ -100,10 +105,9 @@ public class ConnectManager : Photon.PunBehaviour
         PhotonNetwork.LoadLevel(lvlName);
     }
 
-    void OnJoinedLobby()
+    /*void OnJoinedLobby()
     {
         if(ConnectInLobbyByRating_Duel(null))
             LoadLvL("StagePvPDuel");
-        Debug.Log("I JOINED IN LOBBY!");
-    }
+    }*/
 }

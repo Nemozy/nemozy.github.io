@@ -45,7 +45,7 @@ public class StageEnvironment : MonoBehaviour
 
     void Update()
     {
-        if(!StartGame)
+        if (!StartGame)
         {
             if(PhotonNetwork.inRoom && PhotonNetwork.playerList.Length < 2)
             {
@@ -56,7 +56,7 @@ public class StageEnvironment : MonoBehaviour
                 if(Time.timeSinceLevelLoad - 31 < 0)
                     return;
             }
-            else if(StartingTime == 0)
+            if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2 && Time.timeSinceLevelLoad - 31 >= 0)
             {
                 StartingTime = Time.timeSinceLevelLoad;
                 ConnectionPlayers();
