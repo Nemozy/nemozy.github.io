@@ -2,44 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectManager : Photon.PunBehaviour
+public class ConnectManager
 {
-    private string GameVersion = "ver 0.19";
-    private PhotonView MasterView;
-    private Transform itemText;
+    private static string GameVersion = "ver 0.21";
+    //private static PhotonView MasterView;
+    //private static Transform itemText;
 
-    public void Awake()
+    private static void Update()
     {
-        Application.targetFrameRate = 60;
-        //PhotonNetwork.ConnectUsingSettings(GameVersion);
-    }
-
-    void Start ()
-    {
-
-    }
-
-    private void Update()
-    {
-        if (itemText)
+        /*if (itemText)
         {
             itemText.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
-        }
+        }*/
     }
 
-    public void SetSingletonSettings()
+    public static void SetSingletonSettings()
     {
-        PhotonNetwork.automaticallySyncScene = true;
+        //PhotonNetwork.automaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings(GameVersion);
         //PhotonNetwork.InitializeSecurity();
 
         if (string.IsNullOrEmpty(PhotonNetwork.playerName))
         {
-            PhotonNetwork.playerName = "Guest" + Random.Range(1, 9999);
+            PhotonNetwork.playerName = "Player" + Random.Range(1, 9999);
         }
     }
 
-    public void ChangeLevelMaster()
+    public static void ChangeLevelMaster()
     {
         if(PhotonNetwork.masterClient.IsMasterClient)
         {
@@ -47,25 +36,25 @@ public class ConnectManager : Photon.PunBehaviour
         }
     }
 
-    public bool CreateLobby(RoomOptions settings)
+    public static bool CreateLobby(RoomOptions settings)
     {
         return PhotonNetwork.CreateRoom("", settings, null);
     }
 
-    public bool ConnectInRandomLobby()
+    public static bool ConnectInRandomLobby()
     {
         return PhotonNetwork.JoinRandomRoom();
     }
 
-    public int GetPing()
+    public static int GetPing()
     {
         return PhotonNetwork.GetPing();
     }
 
-    public bool ConnectInLobbyByRating_Duel(Transform textItem)
+    public static bool ConnectInLobbyByRating_Duel(Transform textItem)
     {
-        if(textItem)
-            itemText = textItem;
+        //if(textItem)
+        //    itemText = textItem;
 
         bool findRoom = false;
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
@@ -86,21 +75,21 @@ public class ConnectManager : Photon.PunBehaviour
         return findRoom;
     }
 
-    public int GetOnline()
+    public static int GetOnline()
     {
         return PhotonNetwork.countOfPlayers;
     }
 
-    public int GetLobiesCount()
+    public static int GetLobiesCount()
     {
-        return PhotonNetwork.GetRoomList().Length;
+        return PhotonNetwork.countOfRooms;
     }
     /*  private void OnGUI()
       {
           GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
       } */
 
-    public void LoadLvL(string lvlName)
+    public static void LoadLvL(string lvlName)
     {
         PhotonNetwork.LoadLevel(lvlName);
     }

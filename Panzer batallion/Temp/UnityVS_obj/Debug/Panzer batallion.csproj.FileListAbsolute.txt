@@ -1,0 +1,24 @@
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\Assembly-CSharp.pdb
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\Photon3Unity3D.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEditor.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.Analytics.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.HoloLens.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.Networking.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.UI.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.VR.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\websocket-sharp.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.UI.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.Networking.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.Analytics.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.HoloLens.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEngine.VR.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\UnityEditor.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_bin\Debug\Photon3Unity3D.xml
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_obj\Debug\Panzer batallion.csprojResolveAssemblyReference.cache
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_obj\Debug\Assembly-CSharp.dll
+C:\GitHub\nemozy.github.io\Panzer batallion\Temp\UnityVS_obj\Debug\Assembly-CSharp.pdb

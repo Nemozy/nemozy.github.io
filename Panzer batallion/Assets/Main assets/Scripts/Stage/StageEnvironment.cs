@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageEnvironment : MonoBehaviour
+public class StageEnvironment : Photon.MonoBehaviour
 {
     private Dictionary<int, UserInfo.PlayerInfo> Players;
     private float StepTime = 0;
@@ -25,6 +25,16 @@ public class StageEnvironment : MonoBehaviour
 
     private int GameObjectId = 0;
     private int CountPlayers = 0;
+
+    public void Awake()
+    {
+        if (!PhotonNetwork.connected)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+            //Application.LoadLevel("Menu");
+            return;
+        }
+    }
 
     void Start ()
     {
@@ -144,8 +154,9 @@ public class StageEnvironment : MonoBehaviour
             
             UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
             pl.Name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
-            Object player_obj = Resources.Load("Stages/Player_");
-            GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            //Object player_obj = Resources.Load("Stages/Player_");
+            GameObject inst = PhotonNetwork.Instantiate("Stages/Player_", Vector3.zero, Quaternion.identity, 0);
+            // GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             inst.name = pl.Name;
             pl.Team = PhotonNetwork.playerList[i].GetTeam().ToString();
             inst.transform.SetParent(players);
@@ -333,5 +344,10 @@ public class StageEnvironment : MonoBehaviour
 
 
         return retMass;
+    }
+
+    void OnJoinedRoom()
+    {
+       // PhotonNetwork.Instantiate(PrefabName, Vector3.zero, Quaternion.identity, 0);
     }
 }
