@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StageEnvironment : Photon.MonoBehaviour
 {
+    private bool InitPlayers = false;
     private Dictionary<int, UserInfo.PlayerInfo> Players;
     private float StepTime = 0;
     private float StartingTime = 0;
@@ -53,7 +54,13 @@ public class StageEnvironment : Photon.MonoBehaviour
         //BlockAllTanks();
     }
 
-    void Update()
+    /*void OnGUI()
+    {
+        GUI.Button(new Rect(10, 30, 100, 20), PhotonNetwork.connectionState.ToString());
+        GUI.Button(new Rect(10, 70, 150, 20), "PlayerID = " + PhotonNetwork.player.ID.ToString());
+    }*/
+
+    void FixedUpdate()
     {
         if (!StartGame)
         {
@@ -66,16 +73,24 @@ public class StageEnvironment : Photon.MonoBehaviour
                 if(Time.timeSinceLevelLoad - 31 < 0)
                     return;
             }
-            if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2 && Time.timeSinceLevelLoad - 31 >= 0)
+            if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2)
             {
-                StartingTime = Time.timeSinceLevelLoad;
-                ConnectionPlayers();
-                BlockAllTanks();
+                if (!InitPlayers)
+                {
+                    InitPlayers = ConnectionPlayers();
+                    return;
+                }
+                if (InitPlayers)
+                {
+                    StartingTime = Time.timeSinceLevelLoad + 1;
+                    InstantiatePlayersObjects();
+                    BlockAllTanks();
+                }
             }
 
-            if(Time.timeSinceLevelLoad - StartingTime > 3)
+            if(Time.timeSinceLevelLoad - StartingTime > 4)
             {
-                StepState.NewStep(Time.timeSinceLevelLoad, Random.Range(1, Players.Count + 1));
+                StepState.NewStep(Time.timeSinceLevelLoad, /*Random.Range(1, Players.Count + 1)*/1);
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
                 UIMessage.gameObject.SetActive(false);
@@ -87,7 +102,7 @@ public class StageEnvironment : Photon.MonoBehaviour
             {
                 BlockScreen(true);
                 UIMessage.gameObject.SetActive(true);
-                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> " + SetNewTimeInWidget(4) + " <<<";
+                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> " + SetNewTimeInWidget(3) + " <<<";
             }
         }
 
@@ -144,38 +159,90 @@ public class StageEnvironment : Photon.MonoBehaviour
 
     private bool ConnectionPlayers()
     {
-        for(int i=1; i< PhotonNetwork.playerList.Length; i++)
+        /*if (PhotonNetwork.isMasterClient)
+        {
+            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            {
+                Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
+                GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
+                inst.name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
+                inst.transform.SetParent(players);
+                inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+                inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+                int[] parameters = { photonView.viewID, PhotonNetwork.playerList[i].ID };
+                inst.GetPhotonView().RPC("SetParent", PhotonTargets.All, parameters);
+
+                GameObject inst_tank = PhotonNetwork.Instantiate("Tank_1", new Vector3(0, 0, 0), Quaternion.identity, 0) as GameObject;
+                inst_tank.name = "Tank";
+                inst_tank.transform.SetParent(inst.transform);
+                if (PhotonNetwork.playerList[i].ID == 1)
+                    inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
+                if (PhotonNetwork.playerList[i].ID == 2)
+                    inst_tank.transform.localPosition = new Vector3(250, -67, 0);
+                inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.playerList[i].ID);
+
+                inst_tank.GetPhotonView().RPC("SetParent", PhotonTargets.All, parameters);
+            }
+        }*/
+        Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
+        GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
+        inst.name = "Player_" + PhotonNetwork.player.ID.ToString();
+        inst.transform.SetParent(players);
+        inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        int[] parameters = { photonView.viewID, PhotonNetwork.player.ID };
+        inst.GetPhotonView().RPC("SetParent", PhotonTargets.All, parameters);
+
+        GameObject inst_tank = PhotonNetwork.Instantiate("Tank_1", new Vector3(0, 0, 0), Quaternion.identity, 0) as GameObject;
+        inst_tank.name = "Tank";
+        inst_tank.transform.SetParent(inst.transform);
+        if (PhotonNetwork.player.ID == 1)
+            inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
+        if (PhotonNetwork.player.ID == 2)
+            inst_tank.transform.localPosition = new Vector3(250, -67, 0);
+        inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.player.ID);
+
+        inst_tank.GetPhotonView().RPC("SetParent", PhotonTargets.All, parameters);
+
+        CountPlayers = PhotonNetwork.playerList.Length;
+        return true;
+    }
+
+    private bool InstantiatePlayersObjects()
+    {
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
             Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
-            if(i%2 == 0)
+            if (i % 2 == 0)
                 PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.blue);
             else
                 PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.red);
-            
+
             UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
             pl.Name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
             //Object player_obj = Resources.Load("Stages/Player_");
-            GameObject inst = PhotonNetwork.Instantiate("Stages/Player_", Vector3.zero, Quaternion.identity, 0);
+           // GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
             // GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            inst.name = pl.Name;
+            //inst.name = pl.Name;
             pl.Team = PhotonNetwork.playerList[i].GetTeam().ToString();
-            inst.transform.SetParent(players);
-            inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-            inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
-            Object tank = Resources.Load("Models/Tanks/Tank_1/Tank_1");
-            GameObject inst_tank = Instantiate(tank, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            inst_tank.name = "Tank";
-            inst_tank.transform.SetParent(inst.transform);
-            if (i == 1)
+            // inst.transform.SetParent(players);
+            // inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+            // inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+            // Object tank = Resources.Load("Models/Tanks/Tank_1/Tank_1");
+            GameObject inst_tank = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.playerList[i].ID.ToString()).Find("Tank").gameObject;
+
+                //PhotonNetwork.Instantiate("Tank_1", new Vector3(0, 0, 0), Quaternion.identity, 0) as GameObject;
+                //inst_tank.name = "Tank";
+                // inst_tank.transform.SetParent(inst.transform);
+           /* if (i == 0)
                 inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
-            if (i == 2)
-                inst_tank.transform.localPosition = new Vector3(250, -67, 0);
+            if (i == 1)
+                inst_tank.transform.localPosition = new Vector3(250, -67, 0);*/
             inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.playerList[i].ID);
             pl.Unit = new UserInfo.UnitInfo();
             pl.Unit.TransformUnit = inst_tank.transform;
             Players.Add(PhotonNetwork.playerList[i].ID, pl);
         }
-        CountPlayers = PhotonNetwork.playerList.Length;
 
         /*CountPlayers = 1;
 

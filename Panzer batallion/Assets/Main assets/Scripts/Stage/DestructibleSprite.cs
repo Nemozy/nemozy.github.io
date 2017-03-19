@@ -5,7 +5,8 @@ using System.Diagnostics;
 using System;
 
 [RequireComponent (typeof (PolygonCollider2D))]
-public class DestructibleSprite : MonoBehaviour {
+public class DestructibleSprite : Photon.MonoBehaviour
+{
 
 	public Texture2D tex;
 
@@ -54,7 +55,7 @@ public class DestructibleSprite : MonoBehaviour {
 		}
 	}
 
-	void Update() {
+	void FixedUpdate() {
 
 		if(doRefresh) {
 			doRefresh = false;

@@ -13,7 +13,7 @@ public class LoadingStage : MonoBehaviour
     private Text loadingText;
     
     // Updates once per frame
-    void Update()
+    void FixedUpdate ()
     {
 
         // If the player has pressed the space bar and a new scene is not loading yet...

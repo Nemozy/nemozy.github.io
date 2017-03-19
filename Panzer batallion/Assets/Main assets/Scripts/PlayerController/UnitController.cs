@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitController : MonoBehaviour
+//[RequireComponent(typeof(PhotonView))]
+public class UnitController : Photon.MonoBehaviour//, IPunObservable
 {
+    /*private Vector3 latestCorrectPos;
+    private Vector3 onUpdatePos;
+    private float fraction;*/
+    private Vector3 correctPlayerPos;
+    private Quaternion correctPlayerRot;
+
     public float Speed = 0;
     public float DeltaSpeed = 0.35f;
     public float MaxSpeed = 0.50f;
@@ -54,11 +61,16 @@ public class UnitController : MonoBehaviour
 
     void Start ()
     {
-        if(transform.parent.name.ToUpper().Equals("PLAYER_1"))
+        correctPlayerPos = transform.position;
+        correctPlayerRot = transform.rotation;
+        //this.latestCorrectPos = transform.position;
+        //this.onUpdatePos = transform.position;
+
+        if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_1"))
             FuelBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("Fuel").Find("FuelBar");
-        if(transform.parent.name.ToUpper().Equals("PLAYER_1"))
+        if(transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_1"))
             HpBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("HPBars").Find("Left").Find("Bar");
-        else if (transform.parent.name.ToUpper().Equals("PLAYER_2"))
+        else if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_2"))
             HpBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("HPBars").Find("Right").Find("Bar");
 
         Stage = GameObject.Find("Main Camera").transform.Find("Stage");
@@ -75,11 +87,15 @@ public class UnitController : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
+         * this.fraction = this.fraction + Time.deltaTime * 9;
+        transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+         * */
         if (DisableUnit)
             return;
         float HpValue = UnitInfo.Hp.CurrentHp;
         HpValue /= UnitInfo.Hp.MaxHp;
-        if (HpBar)
+        if (HpBar && this.photonView.isMine)
             HpBar.GetComponent<UnityEngine.UI.Image>().fillAmount = HpValue;
         if(UnitInfo.Hp.CurrentHp <= 0)
         {
@@ -108,6 +124,15 @@ public class UnitController : MonoBehaviour
                 FreezeDuration = 0;
             }
         }
+
+       /* if (!this.photonView.isMine)
+        {
+            transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 8);
+            transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 8);
+            //this.fraction = this.fraction + Time.deltaTime;
+            //transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
+            return;     // if this object is under our control, we don't need to apply received position-updates 
+        }*/
 
         if (walkRight)
         {
@@ -211,10 +236,64 @@ public class UnitController : MonoBehaviour
 
         float fuelValue = UnitInfo.Fuel.Fuel;
         fuelValue /= UnitInfo.Fuel.FuelMax;
-        if(FuelBar)
+        if(FuelBar && this.photonView.isMine)
             FuelBar.GetComponent<UnityEngine.UI.Image>().fillAmount = fuelValue;
     }
 
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+
+        }
+        else
+        {
+            // Network player, receive data
+            this.correctPlayerPos = (Vector3)stream.ReceiveNext();
+            this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
+        }
+    }
+    /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+   / {
+        if (stream.isWriting)
+        {
+            Vector3 pos = transform.localPosition;
+            Quaternion rot = transform.localRotation;
+            stream.Serialize(ref pos);
+            stream.Serialize(ref rot);
+        }
+        else
+        {
+            // Receive latest state information
+            Vector3 pos = Vector3.zero;
+            Quaternion rot = Quaternion.identity;
+
+            stream.Serialize(ref pos);
+            stream.Serialize(ref rot);
+
+            this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
+            this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
+            this.fraction = 0;                          // reset the fraction we alreay moved. see Update()
+
+            transform.localRotation = rot;              // this sample doesn't smooth rotation
+        }
+    }*/
+
+    [PunRPC]
+    void SetParent(int[] id)
+    {
+        PhotonView view = PhotonView.Find(id[0]);
+        this.gameObject.name = "Tank";
+        this.transform.SetParent(view.transform.Find("Players").Find("Player_" + id[1].ToString()));
+        if (id[1] == 1)
+            this.transform.localPosition = new Vector3(-155, 65, 0);
+        if (id[1] == 2)
+            this.transform.localPosition = new Vector3(250, -67, 0);
+    }
+    
     public void RemoveBullet(int idBullet)
     {
         if (Bullets.ContainsKey(idBullet))
@@ -281,7 +360,7 @@ public class UnitController : MonoBehaviour
     #region Event Controller
     public void PlayerWalkUp(string value)
     {
-        if(Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
+        if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
         }

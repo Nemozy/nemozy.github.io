@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageInventoryController : MonoBehaviour
+public class StageInventoryController : Photon.MonoBehaviour
 {
     public Transform Stage;
     private int DmgRadius = 15;

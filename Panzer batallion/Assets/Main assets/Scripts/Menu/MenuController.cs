@@ -20,7 +20,7 @@ public class MenuController : MonoBehaviour
         UpdateOnline();
     }
 
-    private void Update()
+    private void FixedUpdate ()
     {
         UpdateOnline();
         //UpdateLobiesCount();

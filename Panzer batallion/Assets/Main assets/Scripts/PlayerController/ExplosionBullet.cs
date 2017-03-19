@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionBullet : MonoBehaviour
+public class ExplosionBullet : Photon.MonoBehaviour
 {
     private int ParentBulletId;
     private int ParentTankId;

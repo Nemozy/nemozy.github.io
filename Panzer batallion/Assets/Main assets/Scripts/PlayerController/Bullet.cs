@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Photon.MonoBehaviour
 {
     private int Id;
     private int ParentTankId;
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 
     }
 	
-	void Update ()
+	void FixedUpdate ()
     {
         if (transform.localPosition.y < -100 || transform.localPosition.x < -600 || transform.localPosition.x > 600)
         {

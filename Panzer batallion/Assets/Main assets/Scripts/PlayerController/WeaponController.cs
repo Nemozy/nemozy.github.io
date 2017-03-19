@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController: MonoBehaviour
+public class WeaponController: Photon.MonoBehaviour
 {
     public Transform ammoNeutralParent;
     public Transform Owner;
@@ -48,7 +48,7 @@ public class WeaponController: MonoBehaviour
 		
 	}
 	
-	void Update ()
+	void FixedUpdate ()
     {
 		
 	}*/

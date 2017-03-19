@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour
+public class ButtonController : Photon.MonoBehaviour
 {
     private Transform objConntrolled;
 
     private void Start()
     {
-        if(GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1") &&
-            GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank"))
-            objConntrolled = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank").transform;
+        if(GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_"+ PhotonNetwork.player.ID.ToString()) &&
+            GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()).Find("Tank"))
+            objConntrolled = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()).Find("Tank").transform;
     }
 
     public void UnitSendMessage(string message)
     {
-        if(!objConntrolled && GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1") &&
-            GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank"))
-            objConntrolled = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank").transform;
+        if (!objConntrolled && GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()) &&
+            GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()))
+            objConntrolled = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()).Find("Tank").transform;
         if (objConntrolled)
         {
             string[] arg = message.Split('|');

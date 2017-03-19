@@ -8,7 +8,7 @@ public class ConnectManager
     //private static PhotonView MasterView;
     //private static Transform itemText;
 
-    private static void Update()
+    private static void FixedUpdate ()
     {
         /*if (itemText)
         {
