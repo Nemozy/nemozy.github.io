@@ -61,6 +61,7 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     void Start ()
     {
+        Target_cell = this.transform.Find("Target_cell").gameObject;
         correctPlayerPos = transform.position;
         correctPlayerRot = transform.rotation;
         //this.latestCorrectPos = transform.position;
@@ -95,7 +96,7 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             return;
         float HpValue = UnitInfo.Hp.CurrentHp;
         HpValue /= UnitInfo.Hp.MaxHp;
-        if (HpBar && this.photonView.isMine)
+        if (HpBar /*&& this.photonView.isMine*/)
             HpBar.GetComponent<UnityEngine.UI.Image>().fillAmount = HpValue;
         if(UnitInfo.Hp.CurrentHp <= 0)
         {
@@ -224,20 +225,28 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             RayToMouse = new Ray(this.transform.position, Vector3.zero);
             Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
             RayToMouse.direction = bulletVec;
-            Bullet bullt = Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
+            Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
+            /*Bullet bullt = */
+            Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
             fire = false;
-            Stage.GetComponent<StageEnvironment>().BlockShoot();
-            if (bullt != null)
+            // Stage.GetComponent<StageEnvironment>().BlockShoot();
+            /*if (bullt != null)
             {
                 Bullets.Add(BulletIdCounter, bullt);
                 BulletIdCounter++;
-            }
+            }*/
         }
 
         float fuelValue = UnitInfo.Fuel.Fuel;
         fuelValue /= UnitInfo.Fuel.FuelMax;
         if(FuelBar && this.photonView.isMine)
             FuelBar.GetComponent<UnityEngine.UI.Image>().fillAmount = fuelValue;
+    }
+
+    public void AddNewBullet(Bullet bullet)
+    {
+        Bullets.Add(BulletIdCounter, bullet);
+        BulletIdCounter++;
     }
 
     void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
@@ -360,6 +369,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
     #region Event Controller
     public void PlayerWalkUp(string value)
     {
+        if (!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
@@ -377,6 +390,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     public void PlayerWalkLeft(string value)
     {
+        if (!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
@@ -394,6 +411,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     public void PlayerWalkRight(string value)
     {
+        if (!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
@@ -411,6 +432,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     public void PlayerWalkDown(string value)
     {
+        if (!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
@@ -428,6 +453,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     public void PlayerCellDown(string value)
     {
+        if(!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit)
         {
             return;
@@ -445,6 +474,10 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     public void PlayerShootingDown(string value)
     {
+        if (!this.photonView.isMine)
+        {
+            return;
+        }
         if (Stage.GetComponent<StageEnvironment>().GetGameOverState() || DisableUnit || Stage.GetComponent<StageEnvironment>().BlockShootState())
         {
             return;

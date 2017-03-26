@@ -12,6 +12,9 @@ public class ExplosionBullet : Photon.MonoBehaviour
     private Transform Players;
     private Transform Stage;
 
+    private Vector3 correctPlayerPos;
+    private Quaternion correctPlayerRot;
+
     void Awake()
     {
         Application.targetFrameRate = 60;
@@ -27,6 +30,8 @@ public class ExplosionBullet : Photon.MonoBehaviour
 
     void Start ()
     {
+        correctPlayerPos = transform.position;
+        correctPlayerRot = transform.rotation;
         if (transform)
         {
             Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
@@ -78,6 +83,23 @@ public class ExplosionBullet : Photon.MonoBehaviour
             {
                 tank.GetComponent<UnitController>().RemoveBullet(ParentBulletId);
             }
+        }
+    }
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            // We own this player: send the others our data
+            stream.SendNext(transform.position);
+            stream.SendNext(transform.rotation);
+
+        }
+        else
+        {
+            // Network player, receive data
+            this.correctPlayerPos = (Vector3)stream.ReceiveNext();
+            this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
         }
     }
 }

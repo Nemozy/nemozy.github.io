@@ -75,6 +75,11 @@ public class StageEnvironment : Photon.MonoBehaviour
             }
             if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2)
             {
+                if(Time.timeSinceLevelLoad < 2)
+                {
+                    return;
+                }
+
                 if (!InitPlayers)
                 {
                     InitPlayers = ConnectionPlayers();
@@ -338,10 +343,16 @@ public class StageEnvironment : Photon.MonoBehaviour
         return Players;
     }
 
+    [PunRPC]
     public void BlockShoot()
     {
         StepState.ShootState = true;
     }
+
+    /*public void BlockShoot()
+    {
+        StepState.ShootState = true;
+    }*/
 
     public void UnBlockShoot()
     {
@@ -412,7 +423,7 @@ public class StageEnvironment : Photon.MonoBehaviour
 
         return retMass;
     }
-
+    
     void OnJoinedRoom()
     {
        // PhotonNetwork.Instantiate(PrefabName, Vector3.zero, Quaternion.identity, 0);
