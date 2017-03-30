@@ -32,6 +32,7 @@ public class MenuController : MonoBehaviour
 
     public void UpdateOnline()
     {
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
         OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString();
     }
 
