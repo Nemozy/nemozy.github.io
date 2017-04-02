@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System;
 
 [RequireComponent (typeof (PolygonCollider2D))]
-public class DestructibleSprite : Photon.MonoBehaviour
+public class DestructibleSprite : MonoBehaviour
 {
 
 	public Texture2D tex;

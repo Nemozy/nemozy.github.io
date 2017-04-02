@@ -19,37 +19,37 @@ public class ConnectManager
     public static void SetSingletonSettings()
     {
         //PhotonNetwork.automaticallySyncScene = true;
-        PhotonNetwork.ConnectUsingSettings(GameVersion);
+        /*PhotonNetwork.ConnectUsingSettings(GameVersion);
         //PhotonNetwork.InitializeSecurity();
 
         if (string.IsNullOrEmpty(PhotonNetwork.playerName))
         {
             PhotonNetwork.playerName = "Player" + Random.Range(1, 9999);
-        }
+        }*/
     }
 
     public static void ChangeLevelMaster()
     {
-        if(PhotonNetwork.masterClient.IsMasterClient)
+        /*if(PhotonNetwork.masterClient.IsMasterClient)
         {
 
-        }
+        }*/
     }
 
-    public static bool CreateLobby(RoomOptions settings)
+   /* public static bool CreateLobby(RoomOptions settings)
     {
-        return PhotonNetwork.CreateRoom("", settings, null);
-    }
+        //return PhotonNetwork.CreateRoom("", settings, null);
+    }*/
 
-    public static bool ConnectInRandomLobby()
+    /*public static bool ConnectInRandomLobby()
     {
         return PhotonNetwork.JoinRandomRoom();
-    }
+    }*/
 
-    public static int GetPing()
+    /*public static int GetPing()
     {
         return PhotonNetwork.GetPing();
-    }
+    }*/
 
     public static bool ConnectInLobbyByRating_Duel(Transform textItem)
     {
@@ -57,7 +57,7 @@ public class ConnectManager
         //    itemText = textItem;
 
         bool findRoom = false;
-        RoomInfo[] rooms = PhotonNetwork.GetRoomList();
+        /*RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         for (int i = 0; i < rooms.Length; i++)
         {
             if (rooms[i].IsVisible && rooms[i].IsOpen && rooms[i].PlayerCount == 1)
@@ -71,28 +71,28 @@ public class ConnectManager
         if (!findRoom)
         {
             findRoom = CreateLobby(new RoomOptions() { MaxPlayers = 2 });
-        }
+        }*/
         return findRoom;
     }
 
-    public static int GetOnline()
+    /*public static int GetOnline()
     {
         return PhotonNetwork.countOfPlayers;
-    }
+    }*/
 
-    public static int GetLobiesCount()
+    /*public static int GetLobiesCount()
     {
         return PhotonNetwork.countOfRooms;
-    }
+    }*/
     /*  private void OnGUI()
       {
           GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
       } */
 
-    public static void LoadLvL(string lvlName)
+    /*public static void LoadLvL(string lvlName)
     {
         PhotonNetwork.LoadLevel(lvlName);
-    }
+    }*/
 
     /*void OnJoinedLobby()
     {

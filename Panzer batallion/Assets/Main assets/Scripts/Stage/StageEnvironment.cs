@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class StageEnvironment : Photon.MonoBehaviour
+public class StageEnvironment : NetworkBehaviour
 {
     private bool InitPlayers = false;
     private Dictionary<int, UserInfo.PlayerInfo> Players;
@@ -24,17 +25,19 @@ public class StageEnvironment : Photon.MonoBehaviour
     //private int IdPlayersStep = 0;
     //private bool Shoot = false;
 
+    [SyncVar(hook = "GameObjectIdCallback")]
     private int GameObjectId = 0;
+    [SyncVar(hook = "CountPlayersCallback")]
     private int CountPlayers = 0;
 
     public void Awake()
     {
-        if (!PhotonNetwork.connected)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
+        //if (!PhotonNetwork.connected)
+        //{
+        //    UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
             //Application.LoadLevel("Menu");
-            return;
-        }
+         //   return;
+        //}
     }
 
     void Start ()
@@ -64,7 +67,8 @@ public class StageEnvironment : Photon.MonoBehaviour
     {
         if (!StartGame)
         {
-            if(PhotonNetwork.inRoom && PhotonNetwork.playerList.Length < 2)
+            InstantiatePlayersObjects();
+            if (/*PhotonNetwork.inRoom && PhotonNetwork.playerList.Length*/CountPlayers < 2)
             {
                 BlockScreen(true);
                 UIMessage.gameObject.SetActive(true);
@@ -73,7 +77,7 @@ public class StageEnvironment : Photon.MonoBehaviour
                 if(Time.timeSinceLevelLoad - 31 < 0)
                     return;
             }
-            if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2)
+            if(StartingTime == 0 && CountPlayers >= 2 /* && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2*/)
             {
                 if(Time.timeSinceLevelLoad < 2)
                 {
@@ -82,13 +86,13 @@ public class StageEnvironment : Photon.MonoBehaviour
 
                 if (!InitPlayers)
                 {
-                    InitPlayers = ConnectionPlayers();
+                    InitPlayers = true;//ConnectionPlayers();
                     return;
                 }
                 if (InitPlayers)
                 {
                     StartingTime = Time.timeSinceLevelLoad + 1;
-                    InstantiatePlayersObjects();
+                    //InstantiatePlayersObjects();
                     BlockAllTanks();
                 }
             }
@@ -141,7 +145,7 @@ public class StageEnvironment : Photon.MonoBehaviour
                         StartStep = false;
                         BlockAllTanks();
                         int winnerNum = CheckWinner();
-                        if (winnerNum > 0)
+                       /* if (winnerNum > 0)
                         {
                             GameOver = true;
 
@@ -153,7 +157,7 @@ public class StageEnvironment : Photon.MonoBehaviour
                                 UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы проиграли <<<";
                             else
                                 UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы победили <<<";
-                        }
+                        }*/
                     }
                     else
                         SetNewTimeInWidget(31);
@@ -161,9 +165,11 @@ public class StageEnvironment : Photon.MonoBehaviour
             }
         }
     }
-
-    private bool ConnectionPlayers()
+   /* private bool ConnectionPlayers()
     {
+    }*/
+   /* private bool ConnectionPlayers()
+    {*/
         /*if (PhotonNetwork.isMasterClient)
         {
             for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
@@ -189,7 +195,7 @@ public class StageEnvironment : Photon.MonoBehaviour
                 inst_tank.GetPhotonView().RPC("SetParent", PhotonTargets.All, parameters);
             }
         }*/
-        Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
+        /*Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
         GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
         inst.name = "Player_" + PhotonNetwork.player.ID.ToString();
         inst.transform.SetParent(players);
@@ -211,45 +217,45 @@ public class StageEnvironment : Photon.MonoBehaviour
 
         CountPlayers = PhotonNetwork.playerList.Length;
         return true;
-    }
+    }*/
 
     private bool InstantiatePlayersObjects()
     {
-        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
-        {
-            Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
-            if (i % 2 == 0)
-                PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.blue);
-            else
-                PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.red);
+        //////for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        //////{
+        //////    Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
+        //////    if (i % 2 == 0)
+        //////        PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.blue);
+        //////    else
+        //////        PhotonNetwork.playerList[i].SetTeam(PunTeams.Team.red);
 
-            UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
-            pl.Name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
-            //Object player_obj = Resources.Load("Stages/Player_");
-           // GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
-            // GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-            //inst.name = pl.Name;
-            pl.Team = PhotonNetwork.playerList[i].GetTeam().ToString();
-            // inst.transform.SetParent(players);
-            // inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
-            // inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
-            // Object tank = Resources.Load("Models/Tanks/Tank_1/Tank_1");
-            GameObject inst_tank = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.playerList[i].ID.ToString()).Find("Tank").gameObject;
+        //////    UserInfo.PlayerInfo pl = new UserInfo.PlayerInfo();
+        //////    pl.Name = "Player_" + PhotonNetwork.playerList[i].ID.ToString();
+        //////    //Object player_obj = Resources.Load("Stages/Player_");
+        //////   // GameObject inst = PhotonNetwork.Instantiate("Player_", Vector3.zero, Quaternion.identity, 0);
+        //////    // GameObject inst = Instantiate(player_obj, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        //////    //inst.name = pl.Name;
+        //////    pl.Team = PhotonNetwork.playerList[i].GetTeam().ToString();
+        //////    // inst.transform.SetParent(players);
+        //////    // inst.transform.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
+        //////    // inst.transform.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+        //////    // Object tank = Resources.Load("Models/Tanks/Tank_1/Tank_1");
+        //////    GameObject inst_tank = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.playerList[i].ID.ToString()).Find("Tank").gameObject;
 
-                //PhotonNetwork.Instantiate("Tank_1", new Vector3(0, 0, 0), Quaternion.identity, 0) as GameObject;
-                //inst_tank.name = "Tank";
-                // inst_tank.transform.SetParent(inst.transform);
-           /* if (i == 0)
-                inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
-            if (i == 1)
-                inst_tank.transform.localPosition = new Vector3(250, -67, 0);*/
-            inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.playerList[i].ID);
-            pl.Unit = new UserInfo.UnitInfo();
-            pl.Unit.TransformUnit = inst_tank.transform;
-            Players.Add(PhotonNetwork.playerList[i].ID, pl);
-        }
+        //////        //PhotonNetwork.Instantiate("Tank_1", new Vector3(0, 0, 0), Quaternion.identity, 0) as GameObject;
+        //////        //inst_tank.name = "Tank";
+        //////        // inst_tank.transform.SetParent(inst.transform);
+        //////   /* if (i == 0)
+        //////        inst_tank.transform.localPosition = new Vector3(-155, 57, 0);
+        //////    if (i == 1)
+        //////        inst_tank.transform.localPosition = new Vector3(250, -67, 0);*/
+        //////    inst_tank.GetComponent<UnitController>().SetId(PhotonNetwork.playerList[i].ID);
+        //////    pl.Unit = new UserInfo.UnitInfo();
+        //////    pl.Unit.TransformUnit = inst_tank.transform;
+        //////    Players.Add(PhotonNetwork.playerList[i].ID, pl);
+        //////}
 
-        /*CountPlayers = 1;
+        CountPlayers++;
 
         Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
 
@@ -272,7 +278,7 @@ public class StageEnvironment : Photon.MonoBehaviour
         pl.Unit.TransformUnit = inst_tank.transform;
         Players.Add(CountPlayers, pl);
 
-        CountPlayers++;
+        /*CountPlayers++;
 
         //Player_2
         pl = new UserInfo.PlayerInfo();
@@ -291,8 +297,8 @@ public class StageEnvironment : Photon.MonoBehaviour
         inst_tank.GetComponent<UnitController>().SetId(CountPlayers);
         pl.Unit = new UserInfo.UnitInfo();
         pl.Unit.TransformUnit = inst_tank.transform;
-        Players.Add(CountPlayers, pl);
-        */
+        Players.Add(CountPlayers, pl);*/
+        
         return true;
     }
 
@@ -306,13 +312,13 @@ public class StageEnvironment : Photon.MonoBehaviour
     {
         int RedTeamAlive = 0;
         int BlueTeamAlive = 0;
-        foreach (int key in Players.Keys)
+        /*foreach (int key in Players.Keys)
         {
             if (string.Equals(Players[key].Team, PunTeams.Team.blue.ToString()) && Players[key].Unit.TransformUnit.GetComponent<UnitController>().UnitInfo.Hp.CurrentHp > 0)
                 BlueTeamAlive++;
             if (string.Equals(Players[key].Team, PunTeams.Team.red.ToString()) && Players[key].Unit.TransformUnit.GetComponent<UnitController>().UnitInfo.Hp.CurrentHp > 0)
                 RedTeamAlive++;
-        }
+        }*/
 
         if (RedTeamAlive == 0 && BlueTeamAlive == 0)
             return 3;
@@ -343,7 +349,7 @@ public class StageEnvironment : Photon.MonoBehaviour
         return Players;
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void BlockShoot()
     {
         StepState.ShootState = true;
@@ -423,9 +429,19 @@ public class StageEnvironment : Photon.MonoBehaviour
 
         return retMass;
     }
-    
-    void OnJoinedRoom()
+
+    /*void OnJoinedRoom()
     {
        // PhotonNetwork.Instantiate(PrefabName, Vector3.zero, Quaternion.identity, 0);
+    }*/
+
+    void CountPlayersCallback(int countPlayers)
+    {
+        CountPlayers = countPlayers;
+    }
+
+    void GameObjectIdCallback(int gameObjectId)
+    {
+        GameObjectId = gameObjectId;
     }
 }

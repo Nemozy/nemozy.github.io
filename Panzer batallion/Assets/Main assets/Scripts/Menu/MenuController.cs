@@ -10,68 +10,67 @@ public class MenuController : MonoBehaviour
 
     void Awake()
     {
-        PhotonNetwork.automaticallySyncScene = true;
+       // PhotonNetwork.automaticallySyncScene = true;
     }
 
     void Start ()
     {
         Application.targetFrameRate = 60;
-        ConnectManager.SetSingletonSettings();
-        UpdateOnline();
+        //ConnectManager.SetSingletonSettings();
+        //UpdateOnline();
     }
 
     private void FixedUpdate ()
     {
-        UpdateOnline();
+        //UpdateOnline();
         //UpdateLobiesCount();
-        if(LobbyReadyToStart())
-        {
+       // if(LobbyReadyToStart())
+        /*{
             ConnectManager.LoadLvL("StagePvPDuel");
-        }
+        }*/
     }
 
-    public void UpdateOnline()
+   /* public void UpdateOnline()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
         OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString();
-    }
+    }*/
 
     /*public void UpdateLobiesCount()
     {
         LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Lobby count: " + PhotonNetwork.GetRoomList().Length.ToString();//this.transform.GetComponent<ConnectManager>().GetLobiesCount().ToString();
     }*/
 
-    public void JoinInLobby(string stageName)
-    {
+    /*public void JoinInLobby(string stageName)
+    {*/
         //if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
         /*if (this.transform.GetComponent<ConnectManager>().ConnectInRandomLobby())
         {
             this.transform.GetComponent<ConnectManager>().LoadLvL(stageName);
         }*/
-        ConnectManager.ConnectInRandomLobby();
-    }
+      //  ConnectManager.ConnectInRandomLobby();
+   // }
     
-    public void CreateLobby()
-    {
+    /*public void CreateLobby()
+    {*/
         //if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
         /*if (this.transform.GetComponent<ConnectManager>().ConnectInRandomLobby())
         {
             this.transform.GetComponent<ConnectManager>().LoadLvL("StagePvPDuel");
         }*/
-        ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
-    }
+        /*ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
+    }*/
 
-    private bool LobbyReadyToStart()
+   /* private bool LobbyReadyToStart()
     {
         if (PhotonNetwork.inRoom && PhotonNetwork.playerList.Length == 2)
             return true;
         return false;
-    }
+    }*/
 
 
 
 
-    void OnCreatedRoom()
+   /* void OnCreatedRoom()
     {
         LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Комната создана";
     }
@@ -106,5 +105,5 @@ public class MenuController : MonoBehaviour
     void OnLeftLobby()
     {
         LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Вы покинули лобби";
-    }
+    }*/
 }
