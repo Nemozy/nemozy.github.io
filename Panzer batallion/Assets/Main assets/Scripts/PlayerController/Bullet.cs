@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Photon.MonoBehaviour
 {
     private int Id;
     private int ParentTankId;
@@ -89,7 +89,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-   /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
@@ -129,5 +129,5 @@ public class Bullet : MonoBehaviour
         this.transform.name = parameters[0];
 
         GameObject.Find("Main Camera").transform.Find("Stage").GetComponent<StageEnvironment>().GetPlayerInfo(int.Parse(parameters[2])).Unit.TransformUnit.GetComponent<UnitController>().AddNewBullet(this);
-    }*/
+    }
 }

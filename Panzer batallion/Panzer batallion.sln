@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panzer batallion.Plugins", "Panzer batallion.Plugins.csproj", "{DBD5C70E-B293-7479-ED3D-129D613CD79C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panzer batallion", "Panzer batallion.csproj", "{6A253394-7CC8-616C-BB23-1351832A47F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panzer batallion.Editor", "Panzer batallion.Editor.csproj", "{3B6C7943-9EC0-23AF-B0BE-2ECD547AF462}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBD5C70E-B293-7479-ED3D-129D613CD79C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD5C70E-B293-7479-ED3D-129D613CD79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD5C70E-B293-7479-ED3D-129D613CD79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD5C70E-B293-7479-ED3D-129D613CD79C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A253394-7CC8-616C-BB23-1351832A47F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6A253394-7CC8-616C-BB23-1351832A47F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A253394-7CC8-616C-BB23-1351832A47F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A253394-7CC8-616C-BB23-1351832A47F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6C7943-9EC0-23AF-B0BE-2ECD547AF462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6C7943-9EC0-23AF-B0BE-2ECD547AF462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6C7943-9EC0-23AF-B0BE-2ECD547AF462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6C7943-9EC0-23AF-B0BE-2ECD547AF462}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

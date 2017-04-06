@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionBullet : MonoBehaviour
+public class ExplosionBullet : Photon.MonoBehaviour
 {
     private int ParentBulletId;
     private int ParentTankId;
@@ -86,7 +86,7 @@ public class ExplosionBullet : MonoBehaviour
         }
     }
 
-    /*void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
@@ -101,5 +101,5 @@ public class ExplosionBullet : MonoBehaviour
             this.correctPlayerPos = (Vector3)stream.ReceiveNext();
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
         }
-    }*/
+    }
 }

@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 //[RequireComponent(typeof(PhotonView))]
-public class UnitController : NetworkBehaviour//, IPunObservable
+public class UnitController : Photon.MonoBehaviour//, IPunObservable
 {
     /*private Vector3 latestCorrectPos;
     private Vector3 onUpdatePos;
@@ -226,20 +225,21 @@ public class UnitController : NetworkBehaviour//, IPunObservable
             RayToMouse = new Ray(this.transform.position, Vector3.zero);
             Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
             RayToMouse.direction = bulletVec;
-            //Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
-            Bullet bullt = Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
+            Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
+            /*Bullet bullt = */
+            Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
             fire = false;
-            Stage.GetComponent<StageEnvironment>().BlockShoot();
-            if (bullt != null)
+            // Stage.GetComponent<StageEnvironment>().BlockShoot();
+            /*if (bullt != null)
             {
                 Bullets.Add(BulletIdCounter, bullt);
                 BulletIdCounter++;
-            }
+            }*/
         }
 
         float fuelValue = UnitInfo.Fuel.Fuel;
         fuelValue /= UnitInfo.Fuel.FuelMax;
-        if(FuelBar /*&& this.photonView.isMine*/)
+        if(FuelBar && this.photonView.isMine)
             FuelBar.GetComponent<UnityEngine.UI.Image>().fillAmount = fuelValue;
     }
 
@@ -249,7 +249,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
         BulletIdCounter++;
     }
 
-   /* void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.isWriting)
         {
@@ -264,7 +264,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
             this.correctPlayerPos = (Vector3)stream.ReceiveNext();
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
         }
-    }*/
+    }
     /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
    / {
         if (stream.isWriting)
@@ -291,7 +291,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
         }
     }*/
 
-   /* [PunRPC]
+    [PunRPC]
     void SetParent(int[] id)
     {
         PhotonView view = PhotonView.Find(id[0]);
@@ -301,7 +301,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
             this.transform.localPosition = new Vector3(-155, 65, 0);
         if (id[1] == 2)
             this.transform.localPosition = new Vector3(250, -67, 0);
-    }*/
+    }
     
     public void RemoveBullet(int idBullet)
     {
@@ -369,7 +369,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
     #region Event Controller
     public void PlayerWalkUp(string value)
     {
-        if (!this.isLocalPlayer)
+        if (!this.photonView.isMine)
         {
             return;
         }
@@ -390,7 +390,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
 
     public void PlayerWalkLeft(string value)
     {
-        if (!this.isLocalPlayer)
+        if (!this.photonView.isMine)
         {
             return;
         }
@@ -411,7 +411,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
 
     public void PlayerWalkRight(string value)
     {
-        if (!this.isLocalPlayer)
+        if (!this.photonView.isMine)
         {
             return;
         }
@@ -432,7 +432,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
 
     public void PlayerWalkDown(string value)
     {
-        if (!this.isLocalPlayer)
+        if (!this.photonView.isMine)
         {
             return;
         }
@@ -453,7 +453,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
 
     public void PlayerCellDown(string value)
     {
-        if(!this.isLocalPlayer)
+        if(!this.photonView.isMine)
         {
             return;
         }
@@ -474,7 +474,7 @@ public class UnitController : NetworkBehaviour//, IPunObservable
 
     public void PlayerShootingDown(string value)
     {
-        if (!this.isLocalPlayer)
+        if (!this.photonView.isMine)
         {
             return;
         }

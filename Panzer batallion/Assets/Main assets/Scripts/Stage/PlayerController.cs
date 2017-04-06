@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Photon.MonoBehaviour
 {
-    //[PunRPC]
+    [PunRPC]
     void SetParent(int[] id)
     {
         //PhotonView view = PhotonView.Find(id[0]);
