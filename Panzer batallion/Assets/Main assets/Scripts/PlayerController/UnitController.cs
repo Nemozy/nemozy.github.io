@@ -220,7 +220,7 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             Target_cell.transform.position = mousePos;
         }
 
-        if(fire && Speed == 0 && Target_cell.activeSelf && !cellDown)
+        if(fire && Speed == 0 && Target_cell.activeSelf && !cellDown && !Stage.GetComponent<StageEnvironment>().BlockShootState())
         {
             RayToMouse = new Ray(this.transform.position, Vector3.zero);
             Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
