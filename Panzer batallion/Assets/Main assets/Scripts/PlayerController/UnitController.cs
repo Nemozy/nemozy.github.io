@@ -220,22 +220,22 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             Target_cell.transform.position = mousePos;
         }
 
-        if(fire && Speed == 0 && Target_cell.activeSelf && !cellDown && !Stage.GetComponent<StageEnvironment>().BlockShootState())
-        {
-            RayToMouse = new Ray(this.transform.position, Vector3.zero);
-            Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
-            RayToMouse.direction = bulletVec;
-            Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
-            /*Bullet bullt = */
-            Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
-            fire = false;
-            // Stage.GetComponent<StageEnvironment>().BlockShoot();
-            /*if (bullt != null)
-            {
-                Bullets.Add(BulletIdCounter, bullt);
-                BulletIdCounter++;
-            }*/
-        }
+        //////if(fire && Speed == 0 && Target_cell.activeSelf && !cellDown)
+        //////{
+        //////    RayToMouse = new Ray(this.transform.position, Vector3.zero);
+        //////    Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
+        //////    RayToMouse.direction = bulletVec;
+        //////    fire = false;
+        //////    Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
+        //////    /*Bullet bullt = */
+        //////    Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
+        //////    // Stage.GetComponent<StageEnvironment>().BlockShoot();
+        //////    /*if (bullt != null)
+        //////    {
+        //////        Bullets.Add(BulletIdCounter, bullt);
+        //////        BulletIdCounter++;
+        //////    }*/
+        //////}
 
         float fuelValue = UnitInfo.Fuel.Fuel;
         fuelValue /= UnitInfo.Fuel.FuelMax;
@@ -290,19 +290,7 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             transform.localRotation = rot;              // this sample doesn't smooth rotation
         }
     }*/
-
-    [PunRPC]
-    void SetParent(int[] id)
-    {
-        PhotonView view = PhotonView.Find(id[0]);
-        this.gameObject.name = "Tank";
-        this.transform.SetParent(view.transform.Find("Players").Find("Player_" + id[1].ToString()));
-        if (id[1] == 1)
-            this.transform.localPosition = new Vector3(-155, 65, 0);
-        if (id[1] == 2)
-            this.transform.localPosition = new Vector3(250, -67, 0);
-    }
-    
+   
     public void RemoveBullet(int idBullet)
     {
         if (Bullets.ContainsKey(idBullet))
@@ -364,6 +352,18 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
         Target_cell.GetComponent<UnityEngine.UI.Image>().color = col;
 
         DisableUnit = false;
+    }
+
+    [PunRPC]
+    void SetParent(int[] id)
+    {
+        PhotonView view = PhotonView.Find(id[0]);
+        this.gameObject.name = "Tank";
+        this.transform.SetParent(view.transform.Find("Players").Find("Player_" + id[1].ToString()));
+        if (id[1] == 1)
+            this.transform.localPosition = new Vector3(-155, 65, 0);
+        if (id[1] == 2)
+            this.transform.localPosition = new Vector3(250, -67, 0);
     }
 
     #region Event Controller
@@ -488,8 +488,16 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
         }
         else
         {
-            if(shootingDown)
-                fire = true;
+            if (shootingDown)
+            {
+                RayToMouse = new Ray(this.transform.position, Vector3.zero);
+                Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
+                RayToMouse.direction = bulletVec;
+                fire = false;
+                Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
+                Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
+                BlockControllUnit();
+            }
 
             shootingDown = false;
         }

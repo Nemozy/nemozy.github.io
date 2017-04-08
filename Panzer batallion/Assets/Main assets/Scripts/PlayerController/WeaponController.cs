@@ -47,7 +47,7 @@ public class WeaponController : Photon.MonoBehaviour
 
         inst.GetPhotonView().RPC("SetPosition", PhotonTargets.All, vecPos);
 
-        inst.GetPhotonView().RPC("SetForce", PhotonTargets.All, vecFire * 10000);
+        inst.GetPhotonView().RPC("SetForce", PhotonTargets.All, vecFire);
 
         //inst.GetComponent<Rigidbody2D>().AddForce(vecFire * 10000, ForceMode2D.Force);
         /*if (inst && inst.GetComponent<Bullet>())

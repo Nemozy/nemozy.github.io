@@ -16,7 +16,7 @@ public class StageEnvironment : Photon.MonoBehaviour
     private Transform UITime;
     private Transform UIMessage;
     private Transform UIBlockScreen;
-
+    private float SleepInitPlayer = 0;
     //Steps
     private UserInfo.Step StepState;
 
@@ -83,19 +83,27 @@ public class StageEnvironment : Photon.MonoBehaviour
                 if (!InitPlayers)
                 {
                     InitPlayers = ConnectionPlayers();
+                    //StartingTime = Time.timeSinceLevelLoad + 1;
+                    /*InstantiatePlayersObjects();
+                    BlockAllTanks();*/
+                    //SleepInitPlayer = Time.timeSinceLevelLoad + 3;
                     return;
                 }
-                if (InitPlayers)
+                if (InitPlayers/* && SleepInitPlayer < Time.timeSinceLevelLoad*/)
                 {
-                    StartingTime = Time.timeSinceLevelLoad + 1;
-                    InstantiatePlayersObjects();
-                    BlockAllTanks();
+                    if (InstantiatePlayersObjects())
+                    {
+                        StartingTime = Time.timeSinceLevelLoad + 1;
+                        BlockAllTanks();
+                    }
+                    else
+                        return;
                 }
             }
 
             if(Time.timeSinceLevelLoad - StartingTime > 4)
             {
-                StepState.NewStep(Time.timeSinceLevelLoad, /*Random.Range(1, Players.Count + 1)*/1);
+                StepState.NewStep(Time.timeSinceLevelLoad, Random.Range(1, Players.Count + 1));
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
                 UIMessage.gameObject.SetActive(false);
@@ -107,7 +115,7 @@ public class StageEnvironment : Photon.MonoBehaviour
             {
                 BlockScreen(true);
                 UIMessage.gameObject.SetActive(true);
-                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> " + SetNewTimeInWidget(3) + " <<<";
+                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> " + SetNewTimeInWidget(3 + StartingTime) + " <<<";
             }
         }
 
@@ -215,6 +223,14 @@ public class StageEnvironment : Photon.MonoBehaviour
 
     private bool InstantiatePlayersObjects()
     {
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+            Transform trnsf = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.playerList[i].ID.ToString());
+            if (!trnsf || !trnsf.Find("Tank") || !trnsf.Find("Tank").gameObject)
+            {
+                return false;
+            }
+        }
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
             Transform players = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players");
