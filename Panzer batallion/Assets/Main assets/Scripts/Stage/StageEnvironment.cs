@@ -311,12 +311,6 @@ public class StageEnvironment : Photon.MonoBehaviour
         */
         return true;
     }
-
-    //Fix inventory (общий пример оружия, который будет копироваться и догружаться от плеера.)
-    /*private void LoadWeaponInventoryInfo()
-    {
-        //InventoryInfo
-    }*/
     
     public int CheckWinner()
     {
@@ -365,11 +359,6 @@ public class StageEnvironment : Photon.MonoBehaviour
         StepState.ShootState = true;
     }
 
-    /*public void BlockShoot()
-    {
-        StepState.ShootState = true;
-    }*/
-
     public void UnBlockShoot()
     {
         StepState.ShootState = false;
@@ -397,7 +386,7 @@ public class StageEnvironment : Photon.MonoBehaviour
 
     public void SetWeapon(int radiusDmg, int dmgMin, int dmgMax)
     {
-        Transform playerUnit = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_1").Find("Tank").transform;
+        Transform playerUnit = GameObject.Find("Main Camera").transform.Find("Stage").Find("Players").Find("Player_" + PhotonNetwork.player.ID.ToString()).Find("Tank").transform;
         if (playerUnit)
         {
             playerUnit.GetComponent<UnitController>().SetWeapon(radiusDmg);

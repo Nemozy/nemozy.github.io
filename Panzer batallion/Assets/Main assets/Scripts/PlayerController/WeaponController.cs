@@ -18,12 +18,12 @@ public class WeaponController : Photon.MonoBehaviour
         Stage = GameObject.Find("Main Camera").transform.Find("Stage");
         ammoNeutralParent = Stage.Find("NeutralObjects").Find("Bullets").transform;
     }
-
+    
     public void SetWeapon(int radiusDmg)
     {
         RadiusDmg = radiusDmg;
     }
-
+    
     public Bullet StartFire(Vector3 vecPos, Vector2 vecFire, string player)
     {
        /* if (!this.photonView.isMine)

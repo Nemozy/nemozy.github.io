@@ -3,20 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //[RequireComponent(typeof(PhotonView))]
-public class UnitController : Photon.MonoBehaviour//, IPunObservable
+public class UnitController : Photon.MonoBehaviour
 {
-    /*private Vector3 latestCorrectPos;
-    private Vector3 onUpdatePos;
-    private float fraction;*/
     private Vector3 correctPlayerPos;
     private Quaternion correctPlayerRot;
 
     public float Speed = 0;
     public float DeltaSpeed = 0.35f;
     public float MaxSpeed = 0.50f;
-    /*public float CurrentHp = 100f;
-    public float MaxHp = 100f;*/
-    //public UserInfo.UnitInfo.FuelInfo Fuel;
     public UserInfo.UnitInfo UnitInfo;
 
     private bool walkUp = false;
@@ -50,8 +44,6 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
     {
         BulletIdCounter = 0;
         Application.targetFrameRate = 60;
-        /*Fuel = new UserInfo.FuelInfo();
-        Fuel.FuelMax = Fuel.Fuel = 1000;*/
         UnitInfo = new UserInfo.UnitInfo();
         UnitInfo.Fuel = new UserInfo.FuelInfo();
         UnitInfo.Fuel.FuelMax = UnitInfo.Fuel.Fuel = 1000;
@@ -64,11 +56,9 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
         Target_cell = this.transform.Find("Target_cell").gameObject;
         correctPlayerPos = transform.position;
         correctPlayerRot = transform.rotation;
-        //this.latestCorrectPos = transform.position;
-        //this.onUpdatePos = transform.position;
 
-        if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_1"))
-            FuelBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("Fuel").Find("FuelBar");
+        //if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_" + PhotonNetwork.player.ID.ToString()))
+        FuelBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("Fuel").Find("FuelBar");
         if(transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_1"))
             HpBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("HPBars").Find("Left").Find("Bar");
         else if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_2"))
@@ -88,15 +78,11 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
 
     void FixedUpdate()
     {
-        /*
-         * this.fraction = this.fraction + Time.deltaTime * 9;
-        transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
-         * */
         if (DisableUnit)
             return;
         float HpValue = UnitInfo.Hp.CurrentHp;
         HpValue /= UnitInfo.Hp.MaxHp;
-        if (HpBar /*&& this.photonView.isMine*/)
+        if (HpBar)
             HpBar.GetComponent<UnityEngine.UI.Image>().fillAmount = HpValue;
         if(UnitInfo.Hp.CurrentHp <= 0)
         {
@@ -125,16 +111,7 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
                 FreezeDuration = 0;
             }
         }
-
-       /* if (!this.photonView.isMine)
-        {
-            transform.position = Vector3.Lerp(transform.position, this.correctPlayerPos, Time.deltaTime * 8);
-            transform.rotation = Quaternion.Lerp(transform.rotation, this.correctPlayerRot, Time.deltaTime * 8);
-            //this.fraction = this.fraction + Time.deltaTime;
-            //transform.localPosition = Vector3.Lerp(this.onUpdatePos, this.latestCorrectPos, this.fraction); // set our pos between A and B
-            return;     // if this object is under our control, we don't need to apply received position-updates 
-        }*/
-
+        
         if (walkRight)
         {
 
@@ -220,23 +197,6 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             Target_cell.transform.position = mousePos;
         }
 
-        //////if(fire && Speed == 0 && Target_cell.activeSelf && !cellDown)
-        //////{
-        //////    RayToMouse = new Ray(this.transform.position, Vector3.zero);
-        //////    Vector2 bulletVec = Target_cell.transform.position - this.transform.position;
-        //////    RayToMouse.direction = bulletVec;
-        //////    fire = false;
-        //////    Stage.gameObject.GetPhotonView().RPC("BlockShoot", PhotonTargets.All);
-        //////    /*Bullet bullt = */
-        //////    Weapon.StartFire(RayToMouse.GetPoint(20), bulletVec, transform.parent.name);
-        //////    // Stage.GetComponent<StageEnvironment>().BlockShoot();
-        //////    /*if (bullt != null)
-        //////    {
-        //////        Bullets.Add(BulletIdCounter, bullt);
-        //////        BulletIdCounter++;
-        //////    }*/
-        //////}
-
         float fuelValue = UnitInfo.Fuel.Fuel;
         fuelValue /= UnitInfo.Fuel.FuelMax;
         if(FuelBar && this.photonView.isMine)
@@ -265,31 +225,6 @@ public class UnitController : Photon.MonoBehaviour//, IPunObservable
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
         }
     }
-    /*public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-   / {
-        if (stream.isWriting)
-        {
-            Vector3 pos = transform.localPosition;
-            Quaternion rot = transform.localRotation;
-            stream.Serialize(ref pos);
-            stream.Serialize(ref rot);
-        }
-        else
-        {
-            // Receive latest state information
-            Vector3 pos = Vector3.zero;
-            Quaternion rot = Quaternion.identity;
-
-            stream.Serialize(ref pos);
-            stream.Serialize(ref rot);
-
-            this.latestCorrectPos = pos;                // save this to move towards it in FixedUpdate()
-            this.onUpdatePos = transform.localPosition; // we interpolate from here to latestCorrectPos
-            this.fraction = 0;                          // reset the fraction we alreay moved. see Update()
-
-            transform.localRotation = rot;              // this sample doesn't smooth rotation
-        }
-    }*/
    
     public void RemoveBullet(int idBullet)
     {

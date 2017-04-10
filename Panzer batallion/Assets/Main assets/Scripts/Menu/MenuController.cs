@@ -49,19 +49,19 @@ public class MenuController : Photon.MonoBehaviour
         {
             this.transform.GetComponent<ConnectManager>().LoadLvL(stageName);
         }*/
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "in lobby";//PhotonNetwork.connectionState.ToString();
-        ConnectManager.ConnectInRandomLobby();
+        //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "in lobby";//PhotonNetwork.connectionState.ToString();
+        //ConnectManager.ConnectInRandomLobby();
     }
     
     public void CreateLobby()
     {
-        //if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
-        /*if (this.transform.GetComponent<ConnectManager>().ConnectInRandomLobby())
-        {
-            this.transform.GetComponent<ConnectManager>().LoadLvL("StagePvPDuel");
-        }*/
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Created lobby";
-        ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
+        ConnectManager.ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text"));
+        //if (ConnectManager.ConnectInRandomLobby())
+       // {
+                //ConnectManager.LoadLvL("StagePvPDuel");
+       // }
+        //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Created lobby";
+       // ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
     }
 
     private bool LobbyReadyToStart()

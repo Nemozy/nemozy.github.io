@@ -21,26 +21,122 @@ Platform assembly: C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\p
 Loading C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\Photon3Unity3D.dll (this message is harmless)
 Loading C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
-- Completed reload, in  0.684 seconds
+- Completed reload, in  0.038 seconds
 Platform assembly: C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\System.dll (this message is harmless)
 desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 539.598389 ms
+UnloadTime: 2.473017 ms
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 9.659434 ms
+UnloadTime: 6.935823 ms
 
 Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 814.
-Total: 99.470627 ms (FindLiveObjects: 0.058158 ms CreateObjectMapping: 0.032072 ms MarkObjects: 99.370560 ms  DeleteObjects: 0.008980 ms)
+Total: 0.723559 ms (FindLiveObjects: 0.106908 ms CreateObjectMapping: 0.040625 ms MarkObjects: 0.568327 ms  DeleteObjects: 0.006414 ms)
 
 Platform assembly: C:\GitHub\nemozy.github.io\Panzer batallion\BuildStandalone\pb_Data\Managed\System.Xml.dll (this message is harmless)
-Received OnSerialization for view ID 2005. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+Received OnSerialization for view ID 1004. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Received OnSerialization for view ID 2006. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+Received RPC "SetForce" for viewID 1007 but this PhotonView does not exist! Was remote PV. Owner called. By: 1 Maybe GO was destroyed but RPC not cleaned up.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -49,5 +145,877 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Received OnSerialization for view ID 1002. We have no such PhotonView! Ignored this if you're leaving a room. State: Joined
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: cdc -> priority: 1 
+  Thread -> id: 17e8 -> priority: 1 
