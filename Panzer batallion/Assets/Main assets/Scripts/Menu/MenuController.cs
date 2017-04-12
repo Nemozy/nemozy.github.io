@@ -16,7 +16,6 @@ public class MenuController : Photon.MonoBehaviour
     void Start ()
     {
         Application.targetFrameRate = 60;
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "ждемс выбора";
         ConnectManager.SetSingletonSettings();
         UpdateOnline();
     }
@@ -55,7 +54,7 @@ public class MenuController : Photon.MonoBehaviour
     
     public void CreateLobby()
     {
-        ConnectManager.ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text"));
+        ConnectManager.ConnectInLobbyByRating_Duel();
         //if (ConnectManager.ConnectInRandomLobby())
        // {
                 //ConnectManager.LoadLvL("StagePvPDuel");
@@ -76,38 +75,38 @@ public class MenuController : Photon.MonoBehaviour
 
     void OnCreatedRoom()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Комната создана";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Room created";
     }
     // Событие вызывается когда игрок вошел в комнату
     void OnJoinedRoom()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Вы вошли в комнату";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Connect in room";
     }
     // Событие срабатывает если игрок покидает комнату
     void OnLeftRoom()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Вы покинули комнату";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Leaving room";
     }
     // Событие срабатывает если не удалось создать комнату
     void OnPhotonCreateRoomFailed()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Не удалось создать комнату";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Cant create room. Plz, repeate.";
     }
 
     void OnPhotonJoinRoomFaild()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Не удалось войти в комнату. Комнаты не существует или она заполнена";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Cant connect to room. Room created? Or its full.";
     }
 
     // LOBBY EVENTS
 
     void OnJoinedLobby()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Вы зашли в лобби";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "You connected in lobby";
     }
 
     void OnLeftLobby()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Вы покинули лобби";
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "You leaving from lobby";
     }
 }

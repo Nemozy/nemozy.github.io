@@ -51,7 +51,7 @@ public class ConnectManager
         return PhotonNetwork.GetPing();
     }
 
-    public static bool ConnectInLobbyByRating_Duel(Transform textItem)
+    public static bool ConnectInLobbyByRating_Duel()
     {
         //if(textItem)
         //    itemText = textItem;
