@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ConnectManager
 {
-    private static string GameVersion = "ver 0.21";
+    private static string GameVersion = "ver 0.28b";
     //private static PhotonView MasterView;
     //private static Transform itemText;
 
