@@ -1,0 +1,39 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="MenuController">
+			<method name="CreateLobby"/>
+		</type>
+		<type fullname="StageInventoryController">
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="AcceptWeapon"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+			<method name="WeaponPick"/>
+		</type>
+		<type fullname="ButtonController">
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+			<method name="UnitSendMessage"/>
+		</type>
+	</assembly>
+	<assembly fullname="UnityEngine">
+		<type fullname="UnityEngine.GameObject">
+			<method name="SetActive"/>
+			<method name="SetActive"/>
+		</type>
+	</assembly>
+</linker>
