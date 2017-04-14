@@ -26,23 +26,23 @@ public class MenuController : Photon.MonoBehaviour
     private void FixedUpdate ()
     {
         UpdateOnline();
-        if(StartFight)
+        
+        if(LobbyReadyToStart())
+        {
+            PhotonNetwork.LoadLevel("StagePvPDuel");
+        }
+        else if (StartFight)
         {
             if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind))
             {
                 if (ConnectManager.ConnectInLobbyByRating_Duel())
                 {
                     StartFind = Time.timeSinceLevelLoad;
-                    WaitingTimeFind = Random.Range(6, 10);
+                    WaitingTimeFind = Random.Range(15, 30);
                 }
             }
             else
                 PhotonNetwork.LeaveRoom();
-        }
-
-        if(LobbyReadyToStart())
-        {
-            ConnectManager.LoadLvL("StagePvPDuel");
         }
     }
 
@@ -88,6 +88,7 @@ public class MenuController : Photon.MonoBehaviour
 
     private bool LobbyReadyToStart()
     {
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "In room " + PhotonNetwork.playerList.Length.ToString() + " player(s)";
         if (PhotonNetwork.inRoom && PhotonNetwork.playerList.Length == 2)
             return true;
         return false;
