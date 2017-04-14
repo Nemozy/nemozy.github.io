@@ -8,6 +8,9 @@ public class MenuController : Photon.MonoBehaviour
     public Transform OnlineBox_text;
     public Transform LobiesBox_text;
 
+    private float StartFind = 0;
+    private float WaitingTimeFind = 10;
+    private bool StartFight = false;
     void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
@@ -23,7 +26,20 @@ public class MenuController : Photon.MonoBehaviour
     private void FixedUpdate ()
     {
         UpdateOnline();
-        //UpdateLobiesCount();
+        if(StartFight)
+        {
+            if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind))
+            {
+                if (ConnectManager.ConnectInLobbyByRating_Duel())
+                {
+                    StartFind = Time.timeSinceLevelLoad;
+                    WaitingTimeFind = Random.Range(6, 10);
+                }
+            }
+            else
+                PhotonNetwork.LeaveRoom();
+        }
+
         if(LobbyReadyToStart())
         {
             ConnectManager.LoadLvL("StagePvPDuel");
@@ -52,15 +68,22 @@ public class MenuController : Photon.MonoBehaviour
         //ConnectManager.ConnectInRandomLobby();
     }
     
-    public void CreateLobby()
+    public void CreateLobby(bool start)
     {
-        ConnectManager.ConnectInLobbyByRating_Duel();
+        StartFight = start;
+       /* if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > 10))
+        {
+            if (ConnectManager.ConnectInLobbyByRating_Duel())
+                StartFind = Time.timeSinceLevelLoad;
+        }
+        else
+            PhotonNetwork.LeaveRoom();*/
         //if (ConnectManager.ConnectInRandomLobby())
-       // {
-                //ConnectManager.LoadLvL("StagePvPDuel");
-       // }
+        // {
+        //ConnectManager.LoadLvL("StagePvPDuel");
+        // }
         //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Created lobby";
-       // ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
+        // ConnectManager.CreateLobby(new RoomOptions() { MaxPlayers = 2 });
     }
 
     private bool LobbyReadyToStart()

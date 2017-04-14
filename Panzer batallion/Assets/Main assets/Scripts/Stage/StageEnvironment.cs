@@ -26,6 +26,7 @@ public class StageEnvironment : Photon.MonoBehaviour
 
     private int GameObjectId = 0;
     private int CountPlayers = 0;
+    private float GameTime = 0;
 
     public void Awake()
     {
@@ -68,7 +69,7 @@ public class StageEnvironment : Photon.MonoBehaviour
             {
                 BlockScreen(true);
                 UIMessage.gameObject.SetActive(true);
-                UIMessage.GetComponent<UnityEngine.UI.Text>().text = "Ждем других игроков..." + SetNewTimeInWidget(31);
+                UIMessage.GetComponent<UnityEngine.UI.Text>().text = "Waiting all players..." + SetNewTimeInWidget(31);
 
                 if(Time.timeSinceLevelLoad - 31 < 0)
                     return;
@@ -158,9 +159,9 @@ public class StageEnvironment : Photon.MonoBehaviour
                             if (winnerNum == 3 ||
                                 (winnerNum == 2 && string.Equals(Players[PhotonNetwork.player.ID].Team, PunTeams.Team.red.ToString())) ||
                                 (winnerNum == 1 && string.Equals(Players[PhotonNetwork.player.ID].Team, PunTeams.Team.blue.ToString())))
-                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы проиграли <<<";
+                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> You lose <<<";
                             else
-                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> Вы победили <<<";
+                                UIMessage.GetComponent<UnityEngine.UI.Text>().text = ">>> You win <<<";
                         }
                     }
                     else

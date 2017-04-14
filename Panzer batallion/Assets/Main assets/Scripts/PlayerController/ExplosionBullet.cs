@@ -17,6 +17,8 @@ public class ExplosionBullet : Photon.MonoBehaviour
 
     void Awake()
     {
+        correctPlayerPos = transform.position;
+        correctPlayerRot = transform.rotation;
         Application.targetFrameRate = 60;
         Stage = GameObject.Find("Main Camera").transform.Find("Stage").transform;
         Players = Stage.Find("Players");
@@ -30,19 +32,27 @@ public class ExplosionBullet : Photon.MonoBehaviour
 
     void Start ()
     {
-        correctPlayerPos = transform.position;
-        correctPlayerRot = transform.rotation;
+        transform.position = correctPlayerPos;
+        transform.rotation = correctPlayerRot;
         if (transform)
         {
             Vector2 explosionPos = new Vector2(transform.position.x, transform.position.y);
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, (float)ExplosionRadius);
-            
+            if (!this.photonView.isMine)
+            {
+                return;
+            }
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i].GetComponent<UnitController>())
-                    colliders[i].GetComponent<UnitController>().GetDamage(ExplosionDmg);
+                    colliders[i].gameObject.GetPhotonView().RPC("GetDamage", PhotonTargets.All, ExplosionDmg);
+                    //colliders[i].GetComponent<UnitController>().GetDamage(ExplosionDmg);
                 if (colliders[i].GetComponent<DestructibleSprite>())
-                    colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, ExplosionRadius);
+                {
+                    float[] parameters = { explosionPos.x, explosionPos.y, ExplosionRadius };
+                    colliders[i].gameObject.GetPhotonView().RPC("ApplyDamage", PhotonTargets.All, parameters);
+                    //colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, ExplosionRadius);
+                }
             }
         }
     }

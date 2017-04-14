@@ -225,15 +225,21 @@ public class DestructibleSprite : Photon.MonoBehaviour
 		if(pos-w >= 0) floodFill(ref b, ref i, pos-w);					// Bottom
 	}
 
-	/**
+    /**
 	 * Remove a part of the texture
+     * parameters[0] - x
+     * parameters[1] - y
+     * parameters[2] - radius
 	 * @param  {Vector2} point         World point
 	 * @param  {int}     radius        Radius of destroyed area
 	 */
-	public void ApplyDamage(Vector2 point, int radius) {
+    [PunRPC]
+    public void ApplyDamage(float[] parameters) {
 
-		// edit binaryImage
-		int w = binaryImage.x, h = binaryImage.y;
+        Vector2 point = new Vector2(parameters[0], parameters[1]);
+        int radius = Mathf.RoundToInt(parameters[2]);
+        // edit binaryImage
+        int w = binaryImage.x, h = binaryImage.y;
 
 		// get relative position of the circle
 		Vector2 rPos = new Vector2(point.x - transform.position.x, point.y - transform.position.y);

@@ -264,6 +264,7 @@ public class UnitController : Photon.MonoBehaviour
         Weapon.SetWeapon(radiusDmg);
     }
 
+    [PunRPC]
     public void GetDamage(int dmg)
     {
         if (UnitInfo.Hp.CurrentHp < dmg)
