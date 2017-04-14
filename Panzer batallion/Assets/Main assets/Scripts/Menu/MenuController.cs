@@ -33,16 +33,16 @@ public class MenuController : Photon.MonoBehaviour
         }
         else if (StartFight)
         {
-            if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind))
+            if (StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind)
             {
+                PhotonNetwork.LeaveRoom();
                 if (ConnectManager.ConnectInLobbyByRating_Duel())
                 {
                     StartFind = Time.timeSinceLevelLoad;
                     WaitingTimeFind = Random.Range(15, 30);
                 }
             }
-            else
-                PhotonNetwork.LeaveRoom();
+                //PhotonNetwork.LeaveRoom();
         }
     }
 
@@ -88,8 +88,7 @@ public class MenuController : Photon.MonoBehaviour
 
     private bool LobbyReadyToStart()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "In room " + PhotonNetwork .room.Name + " " + PhotonNetwork.room.PlayerCount.ToString() + " player(s)";
-        if (PhotonNetwork.inRoom && PhotonNetwork.room.PlayerCount == 2)
+        if (PhotonNetwork.inRoom && PhotonNetwork.room != null && PhotonNetwork.room.PlayerCount == 2)
             return true;
         return false;
     }

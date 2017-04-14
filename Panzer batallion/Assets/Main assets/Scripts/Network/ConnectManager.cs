@@ -36,7 +36,7 @@ public class ConnectManager
         }
     }
 
-    public static bool CreateLobby(RoomOptions settings)
+    public static bool CreateRoom(RoomOptions settings)
     {
         return PhotonNetwork.CreateRoom("", settings, null);
     }
@@ -70,7 +70,7 @@ public class ConnectManager
         
         if (!findRoom)
         {
-            findRoom = CreateLobby(new RoomOptions() { MaxPlayers = 2 });
+            findRoom = CreateRoom(new RoomOptions() { MaxPlayers = 2 });
         }
         return findRoom;
     }
