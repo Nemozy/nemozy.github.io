@@ -88,8 +88,8 @@ public class MenuController : Photon.MonoBehaviour
 
     private bool LobbyReadyToStart()
     {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "In room " + PhotonNetwork.playerList.Length.ToString() + " player(s)";
-        if (PhotonNetwork.inRoom && PhotonNetwork.playerList.Length == 2)
+        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "In room " + PhotonNetwork .room.Name + " " + PhotonNetwork.room.PlayerCount.ToString() + " player(s)";
+        if (PhotonNetwork.inRoom && PhotonNetwork.room.PlayerCount == 2)
             return true;
         return false;
     }
