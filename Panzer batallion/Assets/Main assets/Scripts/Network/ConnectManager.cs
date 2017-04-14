@@ -55,22 +55,33 @@ public class ConnectManager
     {
         //if(textItem)
         //    itemText = textItem;
+        /*In case PlayerRank = 300
+instead of
+string sqlLobbyFilter = "(C0 &gt; (PlayerRank - 50) AND C0 &lt; (PlayerRank + 50))"; set
+string sqlLobbyFilter = "(C0 &gt; 250 AND C0 &lt; 350)";*/
+        TypedLobby sqlLobby = new TypedLobby(null, LobbyType.Default);
+        bool findRoom = PhotonNetwork.JoinRandomRoom(null, 2, MatchmakingMode.FillRoom, sqlLobby, "");
+        //TypedLobby sqlLobby = new TypedLobby(null, LobbyType.SqlLobby);
+        //string sqlLobbyFilter = "(C0 &gt; (PlayerRank - 50) AND C0 &lt; (PlayerRank + 50))";
+        //bool findRoom = PhotonNetwork.JoinRandomRoom(null, 2, MatchmakingMode.FillRoom, sqlLobby, sqlLobbyFilter);
+        /* RoomInfo[] rooms = PhotonNetwork.GetRoomList();
+         for (int i = 0; i < rooms.Length; i++)
+         {
+             if (rooms[i].IsVisible && rooms[i].IsOpen && rooms[i].PlayerCount < 2)
+             {
+                 //connect & play!
+                 if (PhotonNetwork.JoinRoom(rooms[i].Name))
+                     findRoom = true;
+             }
+         }*/
 
-        bool findRoom = false;
-        RoomInfo[] rooms = PhotonNetwork.GetRoomList();
-        for (int i = 0; i < rooms.Length; i++)
-        {
-            if (rooms[i].IsVisible && rooms[i].IsOpen && rooms[i].PlayerCount == 1)
-            {
-                //connect & play!
-                if (PhotonNetwork.JoinRoom(rooms[i].Name))
-                    findRoom = true;
-            }
-        }
-        
         if (!findRoom)
         {
-            findRoom = CreateRoom(new RoomOptions() { MaxPlayers = 2 });
+            RoomOptions newRoomOptions = new RoomOptions();
+            newRoomOptions.IsOpen = true;
+            newRoomOptions.IsVisible = true;
+            newRoomOptions.MaxPlayers = 2;
+            findRoom = CreateRoom(newRoomOptions);
         }
         return findRoom;
     }

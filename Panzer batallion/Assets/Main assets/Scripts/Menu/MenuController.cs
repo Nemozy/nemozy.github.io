@@ -26,8 +26,7 @@ public class MenuController : Photon.MonoBehaviour
     private void FixedUpdate ()
     {
         UpdateOnline();
-        
-        if(LobbyReadyToStart())
+        if (LobbyReadyToStart())
         {
             PhotonNetwork.LoadLevel("StagePvPDuel");
         }
@@ -49,7 +48,10 @@ public class MenuController : Photon.MonoBehaviour
     public void UpdateOnline()
     {
         //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
-        OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString();
+        if (PhotonNetwork.inRoom)
+            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString() + " You in room\"" + PhotonNetwork.room.Name + "\"";
+        else
+            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString();
     }
 
     /*public void UpdateLobiesCount()
@@ -88,6 +90,8 @@ public class MenuController : Photon.MonoBehaviour
 
     private bool LobbyReadyToStart()
     {
+        if (PhotonNetwork.inRoom)
+            Debug.Log(PhotonNetwork.inRoom + " " + PhotonNetwork.room.PlayerCount);
         if (PhotonNetwork.inRoom && PhotonNetwork.room != null && PhotonNetwork.room.PlayerCount == 2)
             return true;
         return false;
