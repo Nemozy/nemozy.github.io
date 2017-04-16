@@ -11,7 +11,7 @@ public class MenuController : Photon.MonoBehaviour
     private float StartFind = 0;
     private float WaitingTimeFind = 10;
     private bool StartFight = false;
-    private bool OnMasterState = true;
+    //private bool OnMasterState = true;
    // private double SleepStart = 0;
     //private double Sleep = 0;
     void Awake()
@@ -31,9 +31,13 @@ public class MenuController : Photon.MonoBehaviour
     {
         RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         UpdateOnline();
-        if (OnMasterState && LobbyReadyToStart())
+        if (/*OnMasterState && */LobbyReadyToStart())
         {
             PhotonNetwork.LoadLevel("StagePvPDuel");
+        }
+        else if(StartFight)
+        {
+            StartFight = !ConnectManager.ConnectInLobbyByRating_Duel();
         }
         ////////else if (OnMasterState && StartFight /*&& PhotonNetwork.time - SleepStart > Sleep*/ && PhotonNetwork.insideLobby && !PhotonNetwork.inRoom)
         ////////{
@@ -65,7 +69,7 @@ public class MenuController : Photon.MonoBehaviour
     
     public void CreateLobby(bool start)
     {
-        ConnectManager.ConnectInLobbyByRating_Duel();
+        //ConnectManager.ConnectInLobbyByRating_Duel();
 
 
 
@@ -76,7 +80,7 @@ public class MenuController : Photon.MonoBehaviour
         if (!PhotonNetwork.insideLobby)
             PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.SqlLobby));*/
 
-        // StartFight = start;
+         StartFight = start;
 
 
         //SleepStart = PhotonNetwork.time;
