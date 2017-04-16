@@ -78,6 +78,11 @@ string sqlLobbyFilter = "(C0 &gt; (PlayerRank - 50) AND C0 &lt; (PlayerRank + 50
                     findRoom = true;
             }
         }
+
+        if(!findRoom)
+        {
+            findRoom = PhotonNetwork.JoinRandomRoom();
+        }
         // Debug.Log(PhotonNetwork.room.Name);
         ////////// if (!findRoom)
         ////////// {

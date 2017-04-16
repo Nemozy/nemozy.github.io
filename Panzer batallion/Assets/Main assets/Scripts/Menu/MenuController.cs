@@ -17,6 +17,7 @@ public class MenuController : Photon.MonoBehaviour
     void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
+        PhotonNetwork.autoJoinLobby = true;
     }
 
     void Start ()
@@ -34,23 +35,23 @@ public class MenuController : Photon.MonoBehaviour
         {
             PhotonNetwork.LoadLevel("StagePvPDuel");
         }
-        else if (OnMasterState && StartFight /*&& PhotonNetwork.time - SleepStart > Sleep*/ && PhotonNetwork.insideLobby && !PhotonNetwork.inRoom)
-        {
-           // if (StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind)
-           // {
-           /*      if (PhotonNetwork.inRoom)
-                 {
-                     PhotonNetwork.LeaveRoom();
-                     OnMasterState = false;
-                     return;
-                 }*/
-                if (ConnectManager.ConnectInLobbyByRating_Duel())
-                {
-                    StartFind = Time.timeSinceLevelLoad;
-         //           WaitingTimeFind = Random.Range(20, 30);
-                }
-           // }
-        }
+        ////////else if (OnMasterState && StartFight /*&& PhotonNetwork.time - SleepStart > Sleep*/ && PhotonNetwork.insideLobby && !PhotonNetwork.inRoom)
+        ////////{
+        ////////   // if (StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind)
+        ////////   // {
+        ////////   /*      if (PhotonNetwork.inRoom)
+        ////////         {
+        ////////             PhotonNetwork.LeaveRoom();
+        ////////             OnMasterState = false;
+        ////////             return;
+        ////////         }*/
+        ////////        if (ConnectManager.ConnectInLobbyByRating_Duel())
+        ////////        {
+        ////////            StartFind = Time.timeSinceLevelLoad;
+        //////// //           WaitingTimeFind = Random.Range(20, 30);
+        ////////        }
+        ////////   // }
+        ////////}
     }
 
     public void UpdateOnline()
@@ -64,6 +65,10 @@ public class MenuController : Photon.MonoBehaviour
     
     public void CreateLobby(bool start)
     {
+        ConnectManager.ConnectInLobbyByRating_Duel();
+
+
+
        /* if (PhotonNetwork.insideLobby)
             if(PhotonNetwork.LeaveLobby())
                 PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.SqlLobby));
@@ -71,11 +76,11 @@ public class MenuController : Photon.MonoBehaviour
         if (!PhotonNetwork.insideLobby)
             PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.SqlLobby));*/
 
-        StartFight = start;
+        // StartFight = start;
 
 
         //SleepStart = PhotonNetwork.time;
-       // Sleep = 1;
+        // Sleep = 1;
         /* if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > 10))
          {
              if (ConnectManager.ConnectInLobbyByRating_Duel())
