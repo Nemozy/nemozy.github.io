@@ -11,6 +11,9 @@ public class MenuController : Photon.MonoBehaviour
     private float StartFind = 0;
     private float WaitingTimeFind = 10;
     private bool StartFight = false;
+    private bool OnMasterState = true;
+   // private double SleepStart = 0;
+    //private double Sleep = 0;
     void Awake()
     {
         PhotonNetwork.automaticallySyncScene = true;
@@ -25,23 +28,28 @@ public class MenuController : Photon.MonoBehaviour
 
     private void FixedUpdate ()
     {
+        RoomInfo[] rooms = PhotonNetwork.GetRoomList();
         UpdateOnline();
-        if (LobbyReadyToStart())
+        if (OnMasterState && LobbyReadyToStart())
         {
             PhotonNetwork.LoadLevel("StagePvPDuel");
         }
-        else if (StartFight)
+        else if (OnMasterState && StartFight /*&& PhotonNetwork.time - SleepStart > Sleep*/ && PhotonNetwork.insideLobby && !PhotonNetwork.inRoom)
         {
-            if (StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind)
-            {
-                PhotonNetwork.LeaveRoom();
+           // if (StartFind == 0 || Time.timeSinceLevelLoad - StartFind > WaitingTimeFind)
+           // {
+           /*      if (PhotonNetwork.inRoom)
+                 {
+                     PhotonNetwork.LeaveRoom();
+                     OnMasterState = false;
+                     return;
+                 }*/
                 if (ConnectManager.ConnectInLobbyByRating_Duel())
                 {
                     StartFind = Time.timeSinceLevelLoad;
-                    WaitingTimeFind = Random.Range(15, 30);
+         //           WaitingTimeFind = Random.Range(20, 30);
                 }
-            }
-                //PhotonNetwork.LeaveRoom();
+           // }
         }
     }
 
@@ -49,37 +57,32 @@ public class MenuController : Photon.MonoBehaviour
     {
         //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = PhotonNetwork.connectionState.ToString();
         if (PhotonNetwork.inRoom)
-            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString() + " You in room\"" + PhotonNetwork.room.Name + "\"";
+            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + PhotonNetwork.countOfPlayers.ToString() + " You in room\"" + PhotonNetwork.room.Name + "\"";
         else
-            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + ConnectManager.GetOnline().ToString();
-    }
-
-    /*public void UpdateLobiesCount()
-    {
-        LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "Lobby count: " + PhotonNetwork.GetRoomList().Length.ToString();//this.transform.GetComponent<ConnectManager>().GetLobiesCount().ToString();
-    }*/
-
-    public void JoinInLobby(string stageName)
-    {
-        //if(this.transform.GetComponent<ConnectManager>().ConnectInLobbyByRating_Duel(this.transform.Find("JoinInLobby_Button").Find("Text")))
-        /*if (this.transform.GetComponent<ConnectManager>().ConnectInRandomLobby())
-        {
-            this.transform.GetComponent<ConnectManager>().LoadLvL(stageName);
-        }*/
-        //LobiesBox_text.GetComponent<UnityEngine.UI.Text>().text = "in lobby";//PhotonNetwork.connectionState.ToString();
-        //ConnectManager.ConnectInRandomLobby();
+            OnlineBox_text.GetComponent<UnityEngine.UI.Text>().text = "Online: " + PhotonNetwork.countOfPlayers.ToString();
     }
     
     public void CreateLobby(bool start)
     {
+       /* if (PhotonNetwork.insideLobby)
+            if(PhotonNetwork.LeaveLobby())
+                PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.SqlLobby));
+
+        if (!PhotonNetwork.insideLobby)
+            PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.SqlLobby));*/
+
         StartFight = start;
-       /* if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > 10))
-        {
-            if (ConnectManager.ConnectInLobbyByRating_Duel())
-                StartFind = Time.timeSinceLevelLoad;
-        }
-        else
-            PhotonNetwork.LeaveRoom();*/
+
+
+        //SleepStart = PhotonNetwork.time;
+       // Sleep = 1;
+        /* if ((StartFind == 0 || Time.timeSinceLevelLoad - StartFind > 10))
+         {
+             if (ConnectManager.ConnectInLobbyByRating_Duel())
+                 StartFind = Time.timeSinceLevelLoad;
+         }
+         else
+             PhotonNetwork.LeaveRoom();*/
         //if (ConnectManager.ConnectInRandomLobby())
         // {
         //ConnectManager.LoadLvL("StagePvPDuel");
@@ -90,15 +93,22 @@ public class MenuController : Photon.MonoBehaviour
 
     private bool LobbyReadyToStart()
     {
-        if (PhotonNetwork.inRoom)
-            Debug.Log(PhotonNetwork.inRoom + " " + PhotonNetwork.room.PlayerCount);
-        if (PhotonNetwork.inRoom && PhotonNetwork.room != null && PhotonNetwork.room.PlayerCount == 2)
+        if (PhotonNetwork.inRoom && PhotonNetwork.room.PlayerCount >=2)
             return true;
         return false;
     }
 
 
-
+    void OnConnectedToMaster()
+    {
+        /*if (!PhotonNetwork.insideLobby)
+            PhotonNetwork.JoinLobby(new TypedLobby("Duel", LobbyType.Default));*/
+       // OnMasterState = true;
+        //SleepStart = PhotonNetwork.time;
+        //Sleep = 5;
+        /*if (this.transform.Find("CreateLobby_Button"))
+            this.transform.Find("CreateLobby_Button").gameObject.SetActive(true);*/
+    }
 
     void OnCreatedRoom()
     {
