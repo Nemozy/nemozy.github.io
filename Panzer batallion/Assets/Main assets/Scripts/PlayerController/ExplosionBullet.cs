@@ -46,12 +46,10 @@ public class ExplosionBullet : Photon.MonoBehaviour
             {
                 if (colliders[i].GetComponent<UnitController>())
                     colliders[i].gameObject.GetPhotonView().RPC("GetDamage", PhotonTargets.All, ExplosionDmg);
-                    //colliders[i].GetComponent<UnitController>().GetDamage(ExplosionDmg);
                 if (colliders[i].GetComponent<DestructibleSprite>())
                 {
                     float[] parameters = { explosionPos.x, explosionPos.y, ExplosionRadius };
                     colliders[i].gameObject.GetPhotonView().RPC("ApplyDamage", PhotonTargets.All, parameters);
-                    //colliders[i].GetComponent<DestructibleSprite>().ApplyDamage(explosionPos, ExplosionRadius);
                 }
             }
         }
@@ -100,14 +98,12 @@ public class ExplosionBullet : Photon.MonoBehaviour
     {
         if (stream.isWriting)
         {
-            // We own this player: send the others our data
             stream.SendNext(transform.position);
             stream.SendNext(transform.rotation);
 
         }
         else
         {
-            // Network player, receive data
             this.correctPlayerPos = (Vector3)stream.ReceiveNext();
             this.correctPlayerRot = (Quaternion)stream.ReceiveNext();
         }

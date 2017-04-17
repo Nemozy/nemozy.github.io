@@ -11,21 +11,9 @@ public class GameInfo
 {
     public class WeaponsInventoryInfo
     {
-        /*private static string secretKey = "h5shkss731gpw810d4";//"secret";
-        private static byte[] key = new byte[8] { 28, 58, 33, 10, 93, 231, 76, 24 };
-        private static byte[] iv = new byte[8] { 78, 43, 61, 94, 39, 54, 8, 101 };*/
         private string secretKey = "h5shkssdprkflvurp3402jtfp65k19fv";
-
         private const string initVector = "h5shkss731gpw810";
-        // This constant is used to determine the keysize of the encryption algorithm
         private const int keysize = 256;
-
-       /* private static string encrypt(string s)
-        {
-            byte[] inputbuffer = Encoding.Unicode.GetBytes(s);
-            byte[] outputBuffer = DES.Create().CreateEncryptor(key, iv).TransformFinalBlock(inputbuffer, 0, inputbuffer.Length);
-            return System.Convert.ToBase64String(outputBuffer);
-        }*/
 
         public Dictionary<string, Weapon> AllWeapons;
 
@@ -35,27 +23,10 @@ public class GameInfo
 
             //Загрузка оружия
             WeaponsInventoryInfoLoading weapons = new WeaponsInventoryInfoLoading();
-            //Подгрузить XML и распарсить её. Потом перессчитать оружие.
-            //string datapath = Application.dataPath + "/Resources/SavedData" + Application.loadedLevel + ".xml";
-
-            /*if (File.Exists(datapath))  // если файл сохранения уже существует
-                weapons = DeXml(datapath);*/
 
             TextAsset textAsset = (TextAsset)Resources.Load("Stages/XMLs/WeaponsDefault");
             if(textAsset && !string.IsNullOrEmpty(textAsset.text))
                 AllWeapons = DeXml(textAsset.text);
-
-            string adad = "";
-            /*for (int i = 0; i < weapons.Weapons.Count; i++)
-            {
-                Weapon bullet = new Weapon(weapons.Weapons[i].Name);
-                bullet.Endless = bool.Parse(encrypt(weapons.Weapons[i].Endless));
-                bullet.MaxDmg = int.Parse(encrypt(weapons.Weapons[i].MaxDmg));
-                bullet.MinDmg = int.Parse(encrypt(weapons.Weapons[i].MinDmg));
-                bullet.UpgradeLvL = int.Parse(encrypt(weapons.Weapons[i].UpgradeLvL));
-
-                AllWeapons.Add(weapons.Weapons[i].Name, bullet);
-            }*/
         }
 
         public Dictionary<string, Weapon> DeXml(string text)
@@ -104,6 +75,7 @@ public class GameInfo
             cryptoStream.Close();
             return Convert.ToBase64String(cipherTextBytes);
         }
+        
         //Decrypt
         public string DecryptString(string cipherText, string passPhrase)
         {
@@ -122,8 +94,6 @@ public class GameInfo
             cryptoStream.Close();
             return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
         }
-
-
     }
 
     [XmlType("WeaponNonCrypt")]

@@ -9,8 +9,7 @@ public class DestructibleSprite : Photon.MonoBehaviour
 {
 
 	public Texture2D tex;
-
-	// Testing
+    
 	public bool doInit = true;
 	public bool doSplit = false;
 
@@ -24,7 +23,7 @@ public class DestructibleSprite : Photon.MonoBehaviour
 	public bool doVertLong;
 	public bool doComplete;
 
-	public float pixelsToUnits = 100f; // Pixels to unity units  100 to 1
+	public float pixelsToUnits = 100f;
 	public float pixelOffset = 0.5f;
 
 	private BinaryImage binaryImage;
@@ -38,8 +37,7 @@ public class DestructibleSprite : Photon.MonoBehaviour
 
 	private List<Vector2> tempPath;
 	private Vector2 endPoint;
-
-	// Use this for initialization
+    
 	void Start () {
 
 		poly = gameObject.GetComponent<PolygonCollider2D>();

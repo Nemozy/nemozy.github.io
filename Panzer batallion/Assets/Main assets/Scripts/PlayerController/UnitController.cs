@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(PhotonView))]
 public class UnitController : Photon.MonoBehaviour
 {
     private Vector3 correctPlayerPos;
@@ -56,8 +55,7 @@ public class UnitController : Photon.MonoBehaviour
         Target_cell = this.transform.Find("Target_cell").gameObject;
         correctPlayerPos = transform.position;
         correctPlayerRot = transform.rotation;
-
-        //if (transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_" + PhotonNetwork.player.ID.ToString()))
+        
         FuelBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("Fuel").Find("FuelBar");
         if(transform.parent && transform.parent.name.ToUpper().Equals("PLAYER_1"))
             HpBar = GameObject.Find("Main Camera").transform.Find("Interface").Find("HPBars").Find("Left").Find("Bar");

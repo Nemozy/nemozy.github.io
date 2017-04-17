@@ -2,9 +2,9 @@ using System.Collections;
 
 public struct BinaryImage
 {
-	public int x;				// Width of the reference texture
-	public int y;				// Height of the reference texture
-	private BitArray b;	// BinaryImage of the reference texture
+	public int x;
+	public int y;	
+	private BitArray b;	
 	public int Length;
 
 	public BinaryImage(int x, int y)
