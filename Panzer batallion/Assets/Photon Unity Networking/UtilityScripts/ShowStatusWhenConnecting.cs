@@ -33,7 +33,7 @@ public class ShowStatusWhenConnecting : MonoBehaviour
     string GetConnectingDots()
     {
         string str = "";
-        int numberOfDots = Mathf.FloorToInt( Time.timeSinceLevelLoad * 3f % 4 );
+        int numberOfDots = Mathf.FloorToInt((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ * 3f % 4 );
 
         for( int i = 0; i < numberOfDots; ++i )
         {

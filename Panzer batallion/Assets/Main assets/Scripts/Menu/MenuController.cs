@@ -7,6 +7,7 @@ public class MenuController : Photon.MonoBehaviour
 {
     public Transform OnlineBox_text;
     public Transform LobiesBox_text;
+    private Transform ButtonStart;
 
     private float StartFind = 0;
     private float WaitingTimeFind = 10;
@@ -23,10 +24,16 @@ public class MenuController : Photon.MonoBehaviour
         Application.targetFrameRate = 60;
         ConnectManager.SetSingletonSettings();
         UpdateOnline();
+        ButtonStart = this.transform.Find("CreateLobby_Button");
     }
 
     private void FixedUpdate ()
     {
+        if(ButtonStart && !ButtonStart.gameObject.activeSelf && Time.timeSinceLevelLoad > 20)
+        {
+            ButtonStart.gameObject.SetActive(true);
+            return;
+        }
         UpdateOnline();
         if (LobbyReadyToStart())
         {

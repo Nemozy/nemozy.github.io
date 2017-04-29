@@ -26,7 +26,7 @@ public class ExplosionBullet : Photon.MonoBehaviour
         for(int i = 0; i < Players.childCount; i++)
         {
             if(Players.GetChild(i).Find("Tank") && Players.GetChild(i).Find("Tank").GetComponent<UnitController>())
-                Players.GetChild(i).Find("Tank").GetComponent<UnitController>().FreezePosition(Time.timeSinceLevelLoad, 1f);
+                Players.GetChild(i).Find("Tank").GetComponent<UnitController>().FreezePosition((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/, 1f);
         }
     }
 

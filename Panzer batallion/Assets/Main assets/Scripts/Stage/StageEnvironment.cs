@@ -56,12 +56,12 @@ public class StageEnvironment : Photon.MonoBehaviour
                 UIMessage.gameObject.SetActive(true);
                 UIMessage.GetComponent<UnityEngine.UI.Text>().text = "Waiting all players..." + SetNewTimeInWidget(31);
 
-                if(Time.timeSinceLevelLoad - 31 < 0)
+                if(PhotonNetwork.time/* Time.timeSinceLevelLoad*/ - 31 < 0)
                     return;
             }
             if(StartingTime == 0 && PhotonNetwork.inRoom && PhotonNetwork.playerList.Length >= 2)
             {
-                if(Time.timeSinceLevelLoad < 2)
+                if(PhotonNetwork.time/*.timeSinceLevelLoad*/ < 2)
                 {
                     return;
                 }
@@ -75,7 +75,7 @@ public class StageEnvironment : Photon.MonoBehaviour
                 {
                     if (InstantiatePlayersObjects())
                     {
-                        StartingTime = Time.timeSinceLevelLoad + 1;
+                        StartingTime = (float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ + 1;
                         BlockAllTanks();
                     }
                     else
@@ -83,9 +83,9 @@ public class StageEnvironment : Photon.MonoBehaviour
                 }
             }
 
-            if(Time.timeSinceLevelLoad - StartingTime > 4)
+            if(PhotonNetwork.time/*Time.timeSinceLevelLoad*/ - StartingTime > 4)
             {
-                StepState.NewStep(Time.timeSinceLevelLoad, Random.Range(1, Players.Count + 1));
+                StepState.NewStep((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/, /*Random.Range(1, Players.Count + 1)*/1);
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
                 UIMessage.gameObject.SetActive(false);
@@ -106,19 +106,19 @@ public class StageEnvironment : Photon.MonoBehaviour
             if (!StartStep)
             {
                 StartStep = true;
-                StepTime = Time.timeSinceLevelLoad;
+                StepTime = (float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/;
 
                 if(Players.ContainsKey(StepState.PlayerId + 1))
-                    StepState.NewStep(Time.timeSinceLevelLoad, StepState.PlayerId + 1);
+                    StepState.NewStep((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/, StepState.PlayerId + 1);
                 else
-                    StepState.NewStep(Time.timeSinceLevelLoad, 1);
+                    StepState.NewStep((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/, 1);
                 BlockAllTanks();
                 UnBlockAllTank_IdPlayer(StepState.PlayerId);
             }
 
             if(StartStep)
             {
-                if(Time.timeSinceLevelLoad - StepTime >= 31)
+                if((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ - StepTime >= 31)
                 {
                     StartStep = false;
                     BlockAllTanks();
@@ -254,6 +254,11 @@ public class StageEnvironment : Photon.MonoBehaviour
     {
         StepState.ShootState = true;
     }
+    [PunRPC]
+    public void RandomPlayerStart()
+    {
+        StepState.ShootState = true;
+    }
 
     public void UnBlockShoot()
     {
@@ -308,7 +313,7 @@ public class StageEnvironment : Photon.MonoBehaviour
 
     private string SetNewTimeInWidget(float dur)
     {
-        return UITime.GetComponent<UnityEngine.UI.Text>().text = "0:" + string.Format("{0:00}", Mathf.FloorToInt(dur - (Time.timeSinceLevelLoad - StepTime)));
+        return UITime.GetComponent<UnityEngine.UI.Text>().text = "0:" + string.Format("{0:00}", Mathf.FloorToInt(dur - ((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ - StepTime)));
     }
 
     public Dictionary<string, GameInfo.Weapon> GetWeaponsDefault_SlotKey()

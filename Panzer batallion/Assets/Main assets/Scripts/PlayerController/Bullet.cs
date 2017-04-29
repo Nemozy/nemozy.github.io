@@ -48,13 +48,13 @@ public class Bullet : Photon.MonoBehaviour
 
     public void SetId(int id, int tankId)
     {
-        DisableDuration = Time.timeSinceLevelLoad;
+        DisableDuration = (float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/;
         Id = id;
         ParentTankId = tankId;
     }
     public void SetParentName(string pl)
     {
-        DisableDuration = Time.timeSinceLevelLoad;
+        DisableDuration = (float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/;
         PlayerName = pl;
     }
 
@@ -67,7 +67,7 @@ public class Bullet : Photon.MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.transform.parent.name.ToUpper().Equals(PlayerName.ToUpper()) && Time.timeSinceLevelLoad - DisableDuration < 2)
+        if (coll.transform.parent.name.ToUpper().Equals(PlayerName.ToUpper()) && (float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ - DisableDuration < 2)
         {
             return;
         }

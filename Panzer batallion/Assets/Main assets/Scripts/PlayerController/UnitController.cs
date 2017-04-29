@@ -99,7 +99,7 @@ public class UnitController : Photon.MonoBehaviour
         }
         if (FreezeDuration > 0)
         {
-            if(Time.timeSinceLevelLoad - StartFreeze < FreezeDuration)
+            if((float)PhotonNetwork.time/*Time.timeSinceLevelLoad*/ - StartFreeze < FreezeDuration)
             {
                 rgb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
